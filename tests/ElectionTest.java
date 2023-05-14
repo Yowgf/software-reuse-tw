@@ -1,4 +1,4 @@
-package scratch;
+package Test.ElectoralSystem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+
 public class ElectionTest {
   @Test
   public void isValidTest(){

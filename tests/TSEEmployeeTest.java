@@ -1,9 +1,11 @@
+package Test.ElectoralSystem;
+
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import TSEEmployee;
-import President;
-import FederalDeputy;
+import ElectoralSystem.TSEEmployee;
+import ElectoralSystem.President;
+import ElectoralSystem.FederalDeputy;
 
 public class TSEEmployeeTest {
   @Test

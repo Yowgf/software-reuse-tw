@@ -1,3 +1,5 @@
+package ElectoralSystem;
+
 public class Voter {
   protected final String electoralCard;
 

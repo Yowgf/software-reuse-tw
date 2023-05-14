@@ -1,3 +1,5 @@
+package ElectoralSystem;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;

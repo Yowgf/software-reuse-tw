@@ -1,7 +1,9 @@
+package Test.ElectoralSystem;
+
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import Candidate;
+import ElectoralSystem.Candidate;
 
 public class CandidateTest {
   @Test

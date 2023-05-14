@@ -1,7 +1,9 @@
+package Test.ElectoralSystem;
+
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import scratch.FederalDeputy;
+import ElectoralSystem.FederalDeputy;
 
 public class FederalDeputyTest {
   @Test

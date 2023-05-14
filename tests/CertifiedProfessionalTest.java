@@ -1,10 +1,12 @@
+package Test.ElectoralSystem;
+
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import CertifiedProfessional;
-import Election;
-import President;
-import FederalDeputy;
+import ElectoralSystem.CertifiedProfessional;
+import ElectoralSystem.Election;
+import ElectoralSystem.President;
+import ElectoralSystem.FederalDeputy;
 
 public class CertifiedProfessionalTest {
   @Test
