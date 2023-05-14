@@ -1,10 +1,10 @@
 package ElectoralSystem;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.text.DecimalFormat;
 
 public class Election {
   private final String password;
@@ -40,18 +40,15 @@ public class Election {
     }
 
     public Election build() {
-      if (password == null)
-        throw new IllegalArgumentException("password mustn't be null");
+      if (password == null) throw new IllegalArgumentException("password mustn't be null");
 
-      if (password.isEmpty())
-        throw new IllegalArgumentException("password mustn't be empty");
+      if (password.isEmpty()) throw new IllegalArgumentException("password mustn't be empty");
 
       return new Election(this.password);
     }
   }
 
-  protected Election(
-      String password) {
+  protected Election(String password) {
     this.password = password;
     this.status = false;
     this.nullFederalDeputyVotes = 0;
@@ -60,7 +57,7 @@ public class Election {
     this.federalDeputyProtestVotes = 0;
   }
 
-  private Boolean isValid(String password) {
+  public Boolean isValid(String password) {
     return this.password.equals(password);
   }
 
@@ -87,7 +84,8 @@ public class Election {
         tempFDVote.remove(voter);
       }
     }
-  };
+  }
+  ;
 
   public void computeNullVote(String type, Voter voter) {
     if (type.equals("President")) {
@@ -101,10 +99,8 @@ public class Election {
         throw new StopTrap("Você não pode votar mais de uma vez para deputado federal");
 
       this.nullFederalDeputyVotes++;
-      if (this.votersFederalDeputy.get(voter) == null)
-        votersFederalDeputy.put(voter, 1);
-      else
-        votersFederalDeputy.put(voter, this.votersFederalDeputy.get(voter) + 1);
+      if (this.votersFederalDeputy.get(voter) == null) votersFederalDeputy.put(voter, 1);
+      else votersFederalDeputy.put(voter, this.votersFederalDeputy.get(voter) + 1);
     }
   }
 
@@ -120,10 +116,8 @@ public class Election {
         throw new StopTrap("Você não pode votar mais de uma vez para deputado federal");
 
       this.federalDeputyProtestVotes++;
-      if (this.votersFederalDeputy.get(voter) == null)
-        votersFederalDeputy.put(voter, 1);
-      else
-        votersFederalDeputy.put(voter, this.votersFederalDeputy.get(voter) + 1);
+      if (this.votersFederalDeputy.get(voter) == null) votersFederalDeputy.put(voter, 1);
+      else votersFederalDeputy.put(voter, this.votersFederalDeputy.get(voter) + 1);
     }
   }
 
@@ -132,15 +126,13 @@ public class Election {
   }
 
   public void start(String password) {
-    if (!isValid(password))
-      throw new Warning("Senha inválida");
+    if (!isValid(password)) throw new Warning("Senha inválida");
 
     this.status = true;
   }
 
   public void finish(String password) {
-    if (!isValid(password))
-      throw new Warning("Senha inválida");
+    if (!isValid(password)) throw new Warning("Senha inválida");
 
     this.status = false;
   }
@@ -150,19 +142,16 @@ public class Election {
   }
 
   public void addPresidentCandidate(President candidate, String password) {
-    if (!isValid(password))
-      throw new Warning("Senha inválida");
+    if (!isValid(password)) throw new Warning("Senha inválida");
 
     if (this.presidentCandidates.get(candidate.number) != null)
       throw new Warning("Numero de candidato indisponível");
 
     this.presidentCandidates.put(candidate.number, candidate);
-
   }
 
   public void removePresidentCandidate(President candidate, String password) {
-    if (!isValid(password))
-      throw new Warning("Senha inválida");
+    if (!isValid(password)) throw new Warning("Senha inválida");
 
     this.presidentCandidates.remove(candidate.number);
   }
@@ -172,8 +161,7 @@ public class Election {
   }
 
   public void addFederalDeputyCandidate(FederalDeputy candidate, String password) {
-    if (!isValid(password))
-      throw new Warning("Senha inválida");
+    if (!isValid(password)) throw new Warning("Senha inválida");
 
     if (this.federalDeputyCandidates.get(candidate.state + candidate.number) != null)
       throw new Warning("Numero de candidato indisponível");
@@ -182,15 +170,13 @@ public class Election {
   }
 
   public void removeFederalDeputyCandidate(FederalDeputy candidate, String password) {
-    if (!isValid(password))
-      throw new Warning("Senha inválida");
+    if (!isValid(password)) throw new Warning("Senha inválida");
 
     this.federalDeputyCandidates.remove(candidate.state + candidate.number);
   }
 
   public String getResults(String password) {
-    if (!isValid(password))
-      throw new Warning("Senha inválida");
+    if (!isValid(password)) throw new Warning("Senha inválida");
 
     if (this.status)
       throw new StopTrap("Eleição ainda não finalizou, não é possível gerar o resultado");
@@ -217,45 +203,87 @@ public class Election {
       federalDeputyRank.add(candidate);
     }
 
-    var sortedFederalDeputyRank = federalDeputyRank.stream()
-        .sorted((o1, o2) -> o1.numVotes == o2.numVotes ? 0 : o1.numVotes < o2.numVotes ? 1 : -1)
-        .collect(Collectors.toList());
+    var sortedFederalDeputyRank =
+        federalDeputyRank.stream()
+            .sorted((o1, o2) -> o1.numVotes == o2.numVotes ? 0 : o1.numVotes < o2.numVotes ? 1 : -1)
+            .collect(Collectors.toList());
 
-    var sortedPresidentRank = presidentRank.stream()
-        .sorted((o1, o2) -> o1.numVotes == o2.numVotes ? 0 : o1.numVotes < o2.numVotes ? 1 : -1)
-        .collect(Collectors.toList());
+    var sortedPresidentRank =
+        presidentRank.stream()
+            .sorted((o1, o2) -> o1.numVotes == o2.numVotes ? 0 : o1.numVotes < o2.numVotes ? 1 : -1)
+            .collect(Collectors.toList());
 
     builder.append("  Votos presidente:\n");
     builder.append("  Total: " + totalVotesP + "\n");
-    builder.append("  Votos nulos: " + nullPresidentVotes + " ("
-        + decimalFormater.format((double) nullPresidentVotes / (double) totalVotesFD * 100) + "%)\n");
-    builder.append("  Votos brancos: " + presidentProtestVotes + " ("
-        + decimalFormater.format((double) presidentProtestVotes / (double) totalVotesFD * 100) + "%)\n");
+    builder.append(
+        "  Votos nulos: "
+            + nullPresidentVotes
+            + " ("
+            + decimalFormater.format((double) nullPresidentVotes / (double) totalVotesFD * 100)
+            + "%)\n");
+    builder.append(
+        "  Votos brancos: "
+            + presidentProtestVotes
+            + " ("
+            + decimalFormater.format((double) presidentProtestVotes / (double) totalVotesFD * 100)
+            + "%)\n");
     builder.append("\tNumero - Partido - Nome  - Votos  - % dos votos totais\n");
     for (President candidate : sortedPresidentRank) {
-      builder.append("\t" + candidate.number + " - " + candidate.party + " - " + candidate.name + " - "
-          + candidate.numVotes + " - "
-          + decimalFormater.format((double) candidate.numVotes / (double) totalVotesP * 100)
-          + "%\n");
+      builder.append(
+          "\t"
+              + candidate.number
+              + " - "
+              + candidate.party
+              + " - "
+              + candidate.name
+              + " - "
+              + candidate.numVotes
+              + " - "
+              + decimalFormater.format((double) candidate.numVotes / (double) totalVotesP * 100)
+              + "%\n");
     }
 
     President electPresident = sortedPresidentRank.get(0);
     builder.append("\n\n  Presidente eleito:\n");
-    builder.append("  " + electPresident.name + " do " + electPresident.party + " com "
-        + decimalFormater.format((double) electPresident.numVotes / (double) totalVotesP * 100) + "% dos votos\n");
+    builder.append(
+        "  "
+            + electPresident.name
+            + " do "
+            + electPresident.party
+            + " com "
+            + decimalFormater.format((double) electPresident.numVotes / (double) totalVotesP * 100)
+            + "% dos votos\n");
     builder.append("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
 
     builder.append("\n\n  Votos deputado federal:\n");
-    builder.append("  Votos nulos: " + nullFederalDeputyVotes + " ("
-        + decimalFormater.format((double) nullFederalDeputyVotes / (double) totalVotesFD * 100) + "%)\n");
-    builder.append("  Votos brancos: " + federalDeputyProtestVotes + " ("
-        + decimalFormater.format((double) federalDeputyProtestVotes / (double) totalVotesFD * 100) + "%)\n");
+    builder.append(
+        "  Votos nulos: "
+            + nullFederalDeputyVotes
+            + " ("
+            + decimalFormater.format((double) nullFederalDeputyVotes / (double) totalVotesFD * 100)
+            + "%)\n");
+    builder.append(
+        "  Votos brancos: "
+            + federalDeputyProtestVotes
+            + " ("
+            + decimalFormater.format(
+                (double) federalDeputyProtestVotes / (double) totalVotesFD * 100)
+            + "%)\n");
     builder.append("  Total: " + totalVotesFD + "\n");
     builder.append("\tNumero - Partido - Nome - Estado - Votos - % dos votos totais\n");
     for (FederalDeputy candidate : sortedFederalDeputyRank) {
       builder.append(
-          "\t" + candidate.number + " - " + candidate.party + " - " + candidate.state + " - " + candidate.name + " - "
-              + candidate.numVotes + " - "
+          "\t"
+              + candidate.number
+              + " - "
+              + candidate.party
+              + " - "
+              + candidate.state
+              + " - "
+              + candidate.name
+              + " - "
+              + candidate.numVotes
+              + " - "
               + decimalFormater.format((double) candidate.numVotes / (double) totalVotesFD * 100)
               + "%\n");
     }
@@ -263,10 +291,22 @@ public class Election {
     FederalDeputy firstDeputy = sortedFederalDeputyRank.get(0);
     FederalDeputy secondDeputy = sortedFederalDeputyRank.get(1);
     builder.append("\n\n  Deputados eleitos:\n");
-    builder.append("  1º " + firstDeputy.name + " do " + firstDeputy.party + " com "
-        + decimalFormater.format((double) firstDeputy.numVotes / (double) totalVotesFD * 100) + "% dos votos\n");
-    builder.append("  2º " + secondDeputy.name + " do " + secondDeputy.party + " com "
-        + decimalFormater.format((double) secondDeputy.numVotes / (double) totalVotesFD * 100) + "% dos votos\n");
+    builder.append(
+        "  1º "
+            + firstDeputy.name
+            + " do "
+            + firstDeputy.party
+            + " com "
+            + decimalFormater.format((double) firstDeputy.numVotes / (double) totalVotesFD * 100)
+            + "% dos votos\n");
+    builder.append(
+        "  2º "
+            + secondDeputy.name
+            + " do "
+            + secondDeputy.party
+            + " com "
+            + decimalFormater.format((double) secondDeputy.numVotes / (double) totalVotesFD * 100)
+            + "% dos votos\n");
 
     return builder.toString();
   }

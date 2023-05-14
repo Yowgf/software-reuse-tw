@@ -9,25 +9,17 @@ public class Candidate {
 
   protected int numVotes;
 
-  public Candidate(
-      String name,
-      String party,
-      int number) {
+  public Candidate(String name, String party, int number) {
 
-    if (name == null)
-      throw new IllegalArgumentException("name mustn't be null");
+    if (name == null) throw new IllegalArgumentException("name mustn't be null");
 
-    if (name.isEmpty())
-      throw new IllegalArgumentException("name mustn't be empty");
+    if (name.isEmpty()) throw new IllegalArgumentException("name mustn't be empty");
 
-    if (party == null)
-      throw new IllegalArgumentException("party mustn't be empty");
+    if (party == null) throw new IllegalArgumentException("party mustn't be empty");
 
-    if (party.isEmpty())
-      throw new IllegalArgumentException("party mustn't be empty");
+    if (party.isEmpty()) throw new IllegalArgumentException("party mustn't be empty");
 
-    if (number <= 0)
-      throw new IllegalArgumentException("number must be greater or equal to 1");
+    if (number <= 0) throw new IllegalArgumentException("number must be greater or equal to 1");
 
     this.name = name;
     this.party = party;

@@ -31,27 +31,19 @@ public class TSEEmployee extends TSEProfessional {
     }
 
     public TSEEmployee build() {
-      if (user == null)
-        throw new IllegalArgumentException("user mustn't be null");
+      if (user == null) throw new IllegalArgumentException("user mustn't be null");
 
-      if (user.isEmpty())
-        throw new IllegalArgumentException("user mustn't be empty");
+      if (user.isEmpty()) throw new IllegalArgumentException("user mustn't be empty");
 
-      if (password == null)
-        throw new IllegalArgumentException("password mustn't be null");
+      if (password == null) throw new IllegalArgumentException("password mustn't be null");
 
-      if (password.isEmpty())
-        throw new IllegalArgumentException("password mustn't be empty");
+      if (password.isEmpty()) throw new IllegalArgumentException("password mustn't be empty");
 
-      return new TSEEmployee(
-          this.user,
-          this.password);
+      return new TSEEmployee(this.user, this.password);
     }
   }
 
-  protected TSEEmployee(
-      String user,
-      String password) {
+  protected TSEEmployee(String user, String password) {
     super(user, password);
   }
 }
