@@ -9,10 +9,11 @@ This project uses `gradle`. The default gradle rules apply. For instance:
 - `gradle build` to build the .jar at `./build/libs/`
 - `gradle test` to execute whatever test suites we have at the moment
 
+After this point, everything is old docs and might not be accurate
+---
+
 ## Como utilizar
 
-**After this point, everything is old docs and might not be accurate**
----
 
 OBS:
 
