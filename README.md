@@ -1,20 +1,18 @@
-## Dependencias
+# Electoral System
 
-- [Java Developer Kit (JDK) 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
-- Make
+Brazil Federal elections emulator.
 
-## Comandos make
+## Build and run
 
-- `make` ou `make full`: Buildar + Executar
-- `make build`: Buildar
-- `make run`: Executar
-- `make clean`: Limpa os arquivos `.class` gerados no build
+This project uses `gradle`. The default gradle rules apply. For instance:
 
-## Como rodar
-
-- Na root do repositório use o comando `make` para buildar e executar o programa
+- `gradle build` to build the .jar at `./build/libs/`
+- `gradle test` to execute whatever test suites we have at the moment
 
 ## Como utilizar
+
+**After this point, everything is old docs and might not be accurate**
+---
 
 OBS:
 
