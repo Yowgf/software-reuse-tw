@@ -1,4 +1,4 @@
-package com.ElectoralSystem;
+package ElectoralSystem;
 
 // Gerencia a preparação do ambiente (candidatos)
 public class TSEEmployee extends TSEProfessional {

@@ -1,4 +1,4 @@
-package com.ElectoralSystem;
+package ElectoralSystem;
 
 public class Voter {
   protected final String electoralCard;

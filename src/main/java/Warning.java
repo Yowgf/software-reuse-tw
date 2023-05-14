@@ -1,4 +1,4 @@
-package com.ElectoralSystem;
+package ElectoralSystem;
 
 public class Warning extends Error {
   public Warning(String s) {

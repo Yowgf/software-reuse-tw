@@ -1,4 +1,4 @@
-package com.ElectoralSystem;
+package ElectoralSystem;
 
 // Gerencia o processo eleitoral
 public class CertifiedProfessional extends TSEProfessional {

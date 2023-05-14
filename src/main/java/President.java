@@ -1,4 +1,4 @@
-package com.ElectoralSystem;
+package ElectoralSystem;
 
 public class President extends Candidate {
   public static class Builder {

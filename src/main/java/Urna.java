@@ -1,4 +1,4 @@
-package com.ElectoralSystem;
+package ElectoralSystem;
 
 import java.util.HashMap;
 import java.util.Scanner;
