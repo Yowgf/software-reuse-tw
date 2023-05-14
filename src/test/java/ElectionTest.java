@@ -1,23 +1,23 @@
-// package Test.ElectoralSystem;
+package ElectoralSystem;
 
-// import java.util.ArrayList;
-// import java.util.HashMap;
-// import java.util.Map;
-// import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-// import static org.junit.Assert.*;
-// import org.junit.Test;
+public class ElectionTest {
+  @Test
+  public void isValidTest(){
+    String electionPassword = "password";
 
-// public class ElectionTest {
-//   @Test
-//   public void isValidTest(){
-//     String electionPassword = "password";
+    Election currentElection = new Election.Builder()
+      .password(electionPassword)
+      .build();
 
-//     currentElection = new Election.Builder()
-//       .password(electionPassword)
-//       .build();
-
-//     assertTrue("A senha da eleição deveria ter sido validada corretamente.", currentElection.isValid(electionPassword));
-//     assertFalse("O candidato a presidente não foi adicionado corretamente.", currentElection.isValid("wrong"));
-//   }
-// }
+    // assertTrue(currentElection.isValid(electionPassword));
+    // assertFalse(currentElection.isValid("wrong"));
+  }
+}

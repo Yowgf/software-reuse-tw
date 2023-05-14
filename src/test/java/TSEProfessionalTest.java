@@ -1,18 +1,16 @@
-// package Test.ElectoralSystem;
+package ElectoralSystem;
 
-// import static org.junit.Assert.*;
-// import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-// import ElectoralSystem.TSEProfessional;
+public class TSEProfessionalTest {
+  @Test
+  public void testTSEProfessionalConstructor(){
+    String user = "Alberto";
+    String password = "123";
 
-// public class TSEProfessionalTest {
-//   @Test
-//   public void testTSEProfessionalConstructor(){
-//     String user = "Alberto";
-//     String password = "123";
+		TSEProfessional tseProfessional = new TSEProfessional(user, password);
 
-// 		TSEProfessional tseProfessional = new TSEProfessional(user, password);
-
-//     assertTrue("O nome do usuario do tse nao esta como definido pelo builder.", tseProfessional.getUser().equals(user));
-// 	}
-// }
+    // assertTrue(tseProfessional.getUser().equals(user));
+	}
+}
