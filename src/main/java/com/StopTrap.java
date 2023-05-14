@@ -1,4 +1,4 @@
-package ElectoralSystem;
+package com.ElectoralSystem;
 
 public class StopTrap extends Error {
   public StopTrap(String s) {

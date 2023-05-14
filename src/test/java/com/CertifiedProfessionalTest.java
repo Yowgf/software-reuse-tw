@@ -1,12 +1,7 @@
-package Test.ElectoralSystem;
+package com.ElectoralSystem;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
-
-import ElectoralSystem.CertifiedProfessional;
-import ElectoralSystem.Election;
-import ElectoralSystem.President;
-import ElectoralSystem.FederalDeputy;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CertifiedProfessionalTest {
   @Test
@@ -19,7 +14,7 @@ public class CertifiedProfessionalTest {
       .password(password)
       .build();
 
-    assertTrue("O nome do empregado do tse nao esta como definido pelo builder.", certifiedProfessional.getUser().equals(user));
+    assertTrue(certifiedProfessional.getUser().equals(user));
 	}
 
   @Test
@@ -38,7 +33,7 @@ public class CertifiedProfessionalTest {
 
     certifiedProfessional.startSession(election, electionPassword);
 
-    assertTrue("A eleicao nao foi iniciada como estperado.", election.getStatus() == true);
+    assertTrue(election.getStatus() == true);
   }
 
   @Test
@@ -62,7 +57,7 @@ public class CertifiedProfessionalTest {
     String expectedMessage = "Senha inválida";
     String actualMessage = exception.getMessage();
 
-    assertTrue("A exception de senha incorreta não foi lançada como esperado.", expectedMessage.equals(actualMessage));
+    assertTrue(expectedMessage.equals(actualMessage));
   }
 
   @Test
@@ -82,7 +77,7 @@ public class CertifiedProfessionalTest {
     certifiedProfessional.startSession(election, electionPassword);
     certifiedProfessional.endSession(election, electionPassword);
 
-    assertTrue("A eleicao nao foi finalizadada como estperado.", election.getStatus() == false);
+    assertTrue(election.getStatus() == false);
   }
 
   @Test
@@ -107,7 +102,7 @@ public class CertifiedProfessionalTest {
     String expectedMessage = "Senha inválida";
     String actualMessage = exception.getMessage();
 
-    assertTrue("A exception de senha incorreta não foi lançada como esperado.", expectedMessage.equals(actualMessage));
+    assertTrue(expectedMessage.equals(actualMessage));
   }
 
   @Test
@@ -115,7 +110,7 @@ public class CertifiedProfessionalTest {
     
     String electionPassword = "password";
 
-    currentElection = new Election.Builder()
+    Election currentElection = new Election.Builder()
       .password(electionPassword)
       .build();
 
@@ -182,6 +177,6 @@ public class CertifiedProfessionalTest {
     ans += "    1º Carlos do PDS1 com 50,00% dos votos\n";
     ans += "    2º Cleber do PDS2 com 16,67% dos votos";
     currentElection.finish(electionPassword);
-    assertTrue("Resultado Incorreto para eleição criada", currentElection.getResults(electionPassword).contains(ans));
+    assertTrue(currentElection.getResults(electionPassword).contains(ans));
 	}
 }

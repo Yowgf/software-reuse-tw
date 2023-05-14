@@ -1,4 +1,4 @@
-package ElectoralSystem;
+package com.ElectoralSystem;
 
 public class Candidate {
   protected final String name;
