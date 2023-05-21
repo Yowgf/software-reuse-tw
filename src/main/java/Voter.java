@@ -1,9 +1,23 @@
+package ElectoralSystem;
+
 public class Voter {
   protected final String electoralCard;
 
   protected final String name;
 
   protected final String state;
+
+  public String getName() {
+    return name;
+  }
+
+  public String getElectoralCard() {
+    return electoralCard;
+  }
+
+  public String getState() {
+    return state;
+  }
 
   public static class Builder {
     private String electoralCard;
@@ -32,17 +46,13 @@ public class Voter {
       if (electoralCard.isEmpty())
         throw new IllegalArgumentException("electoralCard mustn't be empty");
 
-      if (name == null)
-        throw new IllegalArgumentException("name mustn't be null");
+      if (name == null) throw new IllegalArgumentException("name mustn't be null");
 
-      if (name.isEmpty())
-        throw new IllegalArgumentException("name mustn't be empty");
+      if (name.isEmpty()) throw new IllegalArgumentException("name mustn't be empty");
 
-      if (state == null)
-        throw new IllegalArgumentException("state mustn't be null");
+      if (state == null) throw new IllegalArgumentException("state mustn't be null");
 
-      if (state.isEmpty())
-        throw new IllegalArgumentException("state mustn't be empty");
+      if (state.isEmpty()) throw new IllegalArgumentException("state mustn't be empty");
 
       return new Voter(electoralCard, name, state);
     }
@@ -56,25 +66,19 @@ public class Voter {
 
   public void vote(int number, Election election, String type, Boolean isProtestVote) {
     if (type.equals("President")) {
-      if (isProtestVote)
-        election.computeProtestVote("President", this);
-      else if (number == 0)
-        election.computeNullVote("President", this);
+      if (isProtestVote) election.computeProtestVote("President", this);
+      else if (number == 0) election.computeNullVote("President", this);
       else {
         President candidate = election.getPresidentByNumber(number);
-        if (candidate == null)
-          throw new Warning("Número de candidato inválido");
+        if (candidate == null) throw new Warning("Número de candidato inválido");
         election.computeVote(candidate, this);
       }
     } else if (type.equals("FederalDeputy"))
-      if (number == 0)
-        election.computeNullVote("FederalDeputy", this);
-      else if (isProtestVote)
-        election.computeProtestVote("FederalDeputy", this);
+      if (number == 0) election.computeNullVote("FederalDeputy", this);
+      else if (isProtestVote) election.computeProtestVote("FederalDeputy", this);
       else {
         FederalDeputy candidate = election.getFederalDeputyByNumber(this.state, number);
-        if (candidate == null)
-          throw new Warning("Número de candidato inválido");
+        if (candidate == null) throw new Warning("Número de candidato inválido");
         election.computeVote(candidate, this);
       }
   }
