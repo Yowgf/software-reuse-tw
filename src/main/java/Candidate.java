@@ -1,6 +1,8 @@
 package ElectoralSystem;
 
 public class Candidate {
+  protected String id;
+
   protected final String name;
 
   protected final String party;
@@ -25,6 +27,10 @@ public class Candidate {
     this.party = party;
     this.number = number;
     this.numVotes = 0;
+  }
+
+  public String getId() {
+    return this.id;
   }
 
   public String getName() {

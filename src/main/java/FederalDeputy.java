@@ -5,6 +5,10 @@ import java.util.Set;
 public class FederalDeputy extends Candidate {
   protected final String state;
 
+  public String composeId(String state, int number) {
+    return "FederalDeputy_" + state + "_" + number;
+  }
+
   public static class Builder {
     protected String name;
     protected String party;
