@@ -3,17 +3,13 @@ package ElectoralSystem;
 import java.util.Set;
 
 public class FederalDeputy extends Candidate {
-  protected final String state;
-
-  public String composeId(String state, int number) {
-    return "FederalDeputy_" + state + "_" + number;
-  }
+  public static CandidateType type = new CandidateType("Deputado Federal", true);
 
   public static class Builder {
     protected String name;
     protected String party;
     protected int number;
-    protected String state;
+    protected String location;
 
     public Builder name(String name) {
       this.name = name;
@@ -30,8 +26,8 @@ public class FederalDeputy extends Candidate {
       return this;
     }
 
-    public Builder state(String state) {
-      this.state = state;
+    public Builder location(String location) {
+      this.location = location;
       return this;
     }
 
@@ -47,29 +43,29 @@ public class FederalDeputy extends Candidate {
 
       if (party.isEmpty()) throw new IllegalArgumentException("party mustn't be empty");
 
-      if (state == null) throw new IllegalArgumentException("state mustn't be null");
+      if (location == null) throw new IllegalArgumentException("location mustn't be null");
 
-      if (state.isEmpty()) throw new IllegalArgumentException("state mustn't be empty");
+      if (location.isEmpty()) throw new IllegalArgumentException("location mustn't be empty");
 
-      Set<String> validStates =
+      Set<String> validLocations =
           Set.of(
               "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA",
               "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO");
 
-      if (!validStates.contains(state)) throw new IllegalArgumentException("state is invalid");
+      if (!validLocations.contains(location))
+        throw new IllegalArgumentException("location is invalid");
 
-      return new FederalDeputy(this.name, this.party, this.number, this.state);
+      return new FederalDeputy(this.name, this.party, this.number, this.location);
     }
   }
 
-  protected FederalDeputy(String name, String party, int number, String state) {
-    super(name, party, number);
-    this.state = state;
+  protected FederalDeputy(String name, String party, int number, String location) {
+    super(name, party, number, location);
   }
 
   @Override
   public String toString() {
-    return super.name + super.party + super.number + this.state;
+    return super.name + super.party + super.number + this.location;
   }
 
   @Override
@@ -83,7 +79,8 @@ public class FederalDeputy extends Candidate {
     return this.toString().equals(fd.toString());
   }
 
-  public String getState() {
-    return this.state;
+  @Override
+  public CandidateType getType() {
+    return FederalDeputy.type;
   }
 }

@@ -1,6 +1,5 @@
 package ElectoralSystem;
 
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -8,10 +7,6 @@ public abstract class Urna {
   protected final BufferedReader scanner = new BufferedReader(new InputStreamReader(System.in));
   protected Election currentElection;
   protected String electionPassword = "password";
-
-  public Urna(Election currentElection) {
-    currentElection = currentElection;
-  }
 
   protected void print(String output) {
     System.out.println(output);

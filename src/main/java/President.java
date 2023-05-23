@@ -1,6 +1,8 @@
 package ElectoralSystem;
 
 public class President extends Candidate {
+  public static CandidateType type = new CandidateType("Presidente", false);
+
   public static class Builder {
     protected String name;
     protected String party;
@@ -38,6 +40,11 @@ public class President extends Candidate {
   }
 
   protected President(String name, String party, int number) {
-    super(name, party, number);
+    super(name, party, number, "");
+  }
+
+  @Override
+  public CandidateType getType() {
+    return President.type;
   }
 }

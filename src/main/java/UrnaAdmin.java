@@ -9,14 +9,15 @@ class UrnaAdmin extends Urna {
   private boolean sessionStarted = false;
 
   public UrnaAdmin(Election election) {
-    super(election);
+    currentElection = election;
     loadTestTSEProfessionals();
   }
 
-  public boolean menu() {
+  public void menu() {
     try {
+      print("TSE login\n");
       TSEProfessional tseProfessional = getTSEProfessional();
-      if (tseProfessional == null) return false;
+      if (tseProfessional == null) return;
       print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
       boolean back = false;
       while (!back) {
@@ -35,10 +36,8 @@ class UrnaAdmin extends Urna {
       }
     } catch (Warning e) {
       print(e.getMessage());
-    } catch (Exception e) {
-      print("Ocorreu um erro inesperado");
     }
-    return true;
+    return;
   }
 
   public boolean getSessionStarted() {
@@ -50,6 +49,7 @@ class UrnaAdmin extends Urna {
       print("Insira a senha da urna");
       String pwd = readString();
       tseProfessional.startSession(currentElection, pwd);
+      sessionStarted = true;
       print("Sessão inicializada");
       print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     } catch (Warning e) {

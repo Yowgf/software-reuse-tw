@@ -39,17 +39,25 @@ public class Election {
   }
 
   // addVote handles a vote for some candidate.
-  public void addVote(String candidateType, String candidateNumber) {
-    String candidateId = composeCandidateId(candidateType, candidateNumber);
+  public boolean addVote(CandidateType candidateType, String location, String candidateNumber) {
+    String candidateId = composeCandidateId(candidateType, location, candidateNumber);
+    System.err.println("Adding vote to candidate " + candidateId);
+    boolean exists = candidates.containsKey(candidateId);
+    if (!exists) {
+      return false;
+    }
     result.addVote(candidateId);
+    return true;
   }
 
-  public void addNullVote(String candidateType) {
-    result.addNullVote(candidateType);
+  public void addNullVote(CandidateType candidateType, String location) {
+    String candidateId = composeCandidateId(candidateType, location, "");
+    result.addNullVote(candidateId);
   }
 
-  public void addProtestVote(String candidateType) {
-    result.addProtestVote(candidateType);
+  public void addProtestVote(CandidateType candidateType, String location) {
+    String candidateId = composeCandidateId(candidateType, location, "");
+    result.addProtestVote(candidateId);
   }
 
   public boolean getFinished() {
@@ -67,18 +75,23 @@ public class Election {
   }
 
   public void addCandidate(Candidate candidate) {
-    candidates.put(candidate.getId(), candidate);
+    String candidateId =
+        composeCandidateId(
+            candidate.getType(), candidate.getLocation(), String.valueOf(candidate.getNumber()));
+    System.err.println("Adding candidate with id " + candidateId);
+    candidates.put(candidateId, candidate);
   }
 
-  public Candidate getCandidateByNumber(String candidateType, String candidateNumber) {
-    return candidates.get(composeCandidateId(candidateType, candidateNumber));
+  public Candidate getCandidateByNumber(
+      CandidateType candidateType, String location, String candidateNumber) {
+    String candidateId = composeCandidateId(candidateType, location, candidateNumber);
+    return candidates.get(candidateId);
   }
 
   public String getResults(String password) {
     if (!isValid(password)) throw new Warning("Senha inválida");
 
-    if (!this.finished)
-      throw new StopTrap("Eleição ainda não finalizou, não é possível gerar o resultado");
+    if (!this.finished) return "Eleição ainda não finalizou, não é possível gerar o resultado";
 
     var decimalFormater = new DecimalFormat("0.00");
     var presidentRank = new ArrayList<President>();
@@ -216,7 +229,15 @@ public class Election {
     return builder.toString();
   }
 
-  private String composeCandidateId(String candidateType, String candidateNumber) {
-    return candidateType + "_" + candidateNumber;
+  private String composeCandidateId(
+      CandidateType candidateType, String location, String candidateNumber) {
+    String s = candidateType.name;
+    if (!location.isEmpty() && candidateType.isLocationSensitive()) {
+      s += "_" + location;
+    }
+    if (!candidateNumber.isEmpty()) {
+      s += "_" + candidateNumber;
+    }
+    return s;
   }
 }
