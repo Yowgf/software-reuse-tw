@@ -38,6 +38,16 @@ public class Election {
     this.finished = false;
   }
 
+  // addVote overload
+  public boolean addVote(CandidateType candidateType, int num) {
+    return addVote(candidateType, "", num);
+  }
+
+  // addVote overload
+  public boolean addVote(CandidateType candidateType, String location, int num) {
+    return addVote(candidateType, location, String.valueOf(num));
+  }
+
   // addVote handles a vote for some candidate.
   public boolean addVote(CandidateType candidateType, String location, String candidateNumber) {
     String candidateId = composeCandidateId(candidateType, location, candidateNumber);
@@ -80,6 +90,10 @@ public class Election {
             candidate.getType(), candidate.getLocation(), String.valueOf(candidate.getNumber()));
     System.err.println("Adding candidate with id " + candidateId);
     candidates.put(candidateId, candidate);
+  }
+
+  public Candidate getCandidateByNumber(CandidateType candidateType, String location, int num) {
+    return getCandidateByNumber(candidateType, location, String.valueOf(num));
   }
 
   public Candidate getCandidateByNumber(

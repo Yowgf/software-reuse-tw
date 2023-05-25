@@ -1,6 +1,6 @@
 package ElectoralSystem;
 
-public abstract class Candidate {
+public class Candidate {
   protected final String name;
   protected final String party;
   protected final String location;

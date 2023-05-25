@@ -10,11 +10,13 @@ public class CandidateTest {
     String name = "Alberto";
     String party = "PV";
     int number = 1232;
+    String loc = "location1";
 
-    Candidate candidate = new Candidate(name, party, number);
+    Candidate candidate = new Candidate(name, party, number, loc);
 
     assertTrue(candidate.getName().equals(name));
     assertTrue(candidate.getParty().equals(party));
     assertTrue(candidate.getNumber() == number);
+    assertTrue(candidate.getLocation() == loc);
   }
 }
