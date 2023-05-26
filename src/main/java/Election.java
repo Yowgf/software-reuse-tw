@@ -84,12 +84,12 @@ public class Election {
   }
 
   public void addCandidate(Candidate candidate) {
-    var candidateId = new CandidateID(
-            candidate.getType(), candidate.getLocation(), candidate.getNumber());
+    var candidateId =
+        new CandidateID(candidate.getType(), candidate.getLocation(), candidate.getNumber());
     candidates.put(candidateId, candidate);
   }
 
-    // Overload of getCandidate
+  // Overload of getCandidate
   public Candidate getCandidate(CandidateType candidateType, String location, int num) {
     return getCandidate(candidateType, location, String.valueOf(num));
   }

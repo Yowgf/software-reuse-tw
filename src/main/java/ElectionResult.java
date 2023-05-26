@@ -35,14 +35,14 @@ public class ElectionResult {
     protestVotes.put(id, numVotes + 1);
   }
 
-    public String prettyString() {
-        var s = new StringBuilder();
+  public String prettyString() {
+    var s = new StringBuilder();
 
-        for (Map.Entry<CandidateID, Integer> vote : votes.entrySet()) {
-            var id = vote.getKey();
-            var numVotes = vote.getValue();
-            s.append(id + ": " + numVotes);
-        }
+    for (Map.Entry<CandidateID, Integer> vote : votes.entrySet()) {
+      var id = vote.getKey();
+      var numVotes = vote.getValue();
+      s.append(id + ": " + numVotes);
+    }
 
     // int totalVotesFD = federalDeputyProtestVotes + nullFederalDeputyVotes;
     // for (Map.Entry<String, FederalDeputy> candidateEntry : federalDeputyCandidates.entrySet()) {
@@ -162,6 +162,6 @@ public class ElectionResult {
     // 100)
     //         + "% dos votos\n");
 
-        return s.toString();
-    }
+    return s.toString();
+  }
 }
