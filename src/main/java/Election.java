@@ -51,7 +51,6 @@ public class Election {
   // addVote handles a vote for some candidate.
   public boolean addVote(CandidateType typ, String location, String candidateNumber) {
     var candidateId = new CandidateID(typ, location, candidateNumber);
-    System.err.println("Adding vote to candidate " + candidateId);
     boolean exists = candidates.containsKey(candidateId);
     if (!exists) {
       return false;
@@ -87,7 +86,6 @@ public class Election {
   public void addCandidate(Candidate candidate) {
     var candidateId = new CandidateID(
             candidate.getType(), candidate.getLocation(), candidate.getNumber());
-    System.err.println("Adding candidate with id " + candidateId);
     candidates.put(candidateId, candidate);
   }
 

@@ -48,7 +48,6 @@ class UrnaVoter extends Urna {
       boolean voteConfirmed = false;
       while (!voteConfirmed) {
         voteConfirmed = vote(voter, voteSequence.get(i));
-        print("Vote confirmed: " + voteConfirmed);
       }
     }
   }
@@ -56,7 +55,7 @@ class UrnaVoter extends Urna {
   // vote processes a vote for a candidate type, and returns true in case of
   // success. In case the vote was not successfully processed, returns false.
   private boolean vote(Voter voter, CandidateType candidateType) {
-    print("Vote for " + candidateType.name + ": ");
+    print("Vote para " + candidateType.name + ": ");
     String vstr = readString();
     switch (vstr) {
       case "br":
