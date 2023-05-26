@@ -30,7 +30,7 @@ val fatJar = task("fatJar", type = Jar::class) {
             mapOf(
                 "Implementation-Title" to "ElectoralSystem",
                 "Implementation-Version" to "0.1",
-                "Main-Class" to "ElectoralSystem.Urna"
+                "Main-Class" to "ElectoralSystem.Main"
             )
         )
     }

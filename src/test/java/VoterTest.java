@@ -9,12 +9,13 @@ public class VoterTest {
   public void testVoterBuilder() {
     String electoralCard = "123456789012";
     String name = "Roberto";
-    String state = "MG";
+    String location = "MG";
 
-    Voter voter = new Voter.Builder().electoralCard(electoralCard).name(name).state(state).build();
+    Voter voter =
+        new Voter.Builder().electoralCard(electoralCard).name(name).location(location).build();
 
     assertTrue(voter.getElectoralCard().equals(electoralCard));
     assertTrue(voter.getName().equals(name));
-    assertTrue(voter.getState().equals(state));
+    assertTrue(voter.getLocation().equals(location));
   }
 }

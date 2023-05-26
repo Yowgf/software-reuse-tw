@@ -2,14 +2,11 @@ package ElectoralSystem;
 
 public class Candidate {
   protected final String name;
-
   protected final String party;
-
+  protected final String location;
   protected final int number;
 
-  protected int numVotes;
-
-  public Candidate(String name, String party, int number) {
+  public Candidate(String name, String party, int number, String location) {
 
     if (name == null) throw new IllegalArgumentException("name mustn't be null");
 
@@ -23,8 +20,8 @@ public class Candidate {
 
     this.name = name;
     this.party = party;
+    this.location = location;
     this.number = number;
-    this.numVotes = 0;
   }
 
   public String getName() {
@@ -35,7 +32,17 @@ public class Candidate {
     return this.party;
   }
 
+  public String getLocation() {
+    return this.location;
+  }
+
   public int getNumber() {
     return this.number;
+  }
+
+  // getType returns a candidate type, which should encompass information like
+  // if the candidate is running for elections in a specific location.
+  public CandidateType getType() {
+    return new CandidateType("undefined", false);
   }
 }
