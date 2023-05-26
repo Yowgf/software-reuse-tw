@@ -50,13 +50,11 @@ public class CandidateID {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (o == null || this.getClass() != o.getClass()) {
             return false;
         }
         CandidateID other = (CandidateID) o;
-        return this.typ == other.getType()
-            && this.location == other.getLocation()
-            && this.candidateNum == other.getCandidateNumber();
+        return this.toString().equals(other.toString());
     }
 
     // hashCode exists to allow usage of CandidateID as a custom key in a hash

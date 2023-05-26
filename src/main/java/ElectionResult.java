@@ -38,9 +38,11 @@ public class ElectionResult {
     public String prettyString() {
         var s = new StringBuilder();
 
-        // for (Map.Entry<String, Integer> vote : votes.entrySet()) {
-        //     s.append(vote.getKey() + ": " + vote.getValue());
-        // }
+        for (Map.Entry<CandidateID, Integer> vote : votes.entrySet()) {
+            var id = vote.getKey();
+            var numVotes = vote.getValue();
+            s.append(id + ": " + numVotes);
+        }
 
     // int totalVotesFD = federalDeputyProtestVotes + nullFederalDeputyVotes;
     // for (Map.Entry<String, FederalDeputy> candidateEntry : federalDeputyCandidates.entrySet()) {

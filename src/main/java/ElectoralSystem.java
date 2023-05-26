@@ -3,7 +3,7 @@ package ElectoralSystem;
 class ElectoralSystem {
   private UrnaAdmin urnaAdmin;
   private UrnaVoter urnaVoter;
-  private String electionPassword = "password";
+  private String electionPassword = "pass";
   private Election election;
 
   public ElectoralSystem() {
