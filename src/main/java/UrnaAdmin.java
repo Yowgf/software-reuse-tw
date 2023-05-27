@@ -3,15 +3,20 @@ package ElectoralSystem;
 import java.util.HashMap;
 import java.util.Map;
 
-class UrnaAdmin extends Urna {
+class UrnaAdmin {
   private final Map<String, TSEProfessional> TSEMap = new HashMap<>();
 
+    private Election election;    
   private boolean sessionStarted = false;
 
   public UrnaAdmin(Election election) {
-    currentElection = election;
+    election = election;
     loadTestTSEProfessionals();
   }
+
+    private void print(String s) {
+        System.out.println(s);
+    }
 
   public void menu() {
     try {
@@ -25,7 +30,7 @@ class UrnaAdmin extends Urna {
         print("(2) Finalizar sessão");
         print("(3) Mostrar resultados");
         print("(0) Sair");
-        int command = readInt();
+        int command = PluginUtils.readInt();
         switch (command) {
           case 1 -> startSession((CertifiedProfessional) tseProfessional);
           case 2 -> endSession((CertifiedProfessional) tseProfessional);
@@ -47,8 +52,8 @@ class UrnaAdmin extends Urna {
   private void startSession(CertifiedProfessional tseProfessional) {
     try {
       print("Insira a senha da urna");
-      String pwd = readString();
-      tseProfessional.startSession(currentElection, pwd);
+      String pwd = PluginUtils.readString();
+      tseProfessional.startSession(election, pwd);
       sessionStarted = true;
       print("Sessão inicializada");
       print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
@@ -60,8 +65,8 @@ class UrnaAdmin extends Urna {
   private void endSession(CertifiedProfessional tseProfessional) {
     try {
       print("Insira a senha da urna:");
-      String pwd = readString();
-      tseProfessional.endSession(currentElection, pwd);
+      String pwd = PluginUtils.readString();
+      tseProfessional.endSession(election, pwd);
       print("Sessão finalizada com sucesso");
       print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     } catch (Warning e) {
@@ -71,7 +76,7 @@ class UrnaAdmin extends Urna {
 
   private TSEProfessional getTSEProfessional() {
     print("Insira seu usuário:");
-    String user = readString();
+    String user = PluginUtils.readString();
     TSEProfessional tseProfessional = TSEMap.get(user);
     if (tseProfessional == null) {
       print(
@@ -79,7 +84,7 @@ class UrnaAdmin extends Urna {
               + " novamente");
     } else {
       print("Insira sua senha:");
-      String password = readString();
+      String password = PluginUtils.readString();
       // Deveria ser um hash na pratica
       if (tseProfessional.password.equals(password)) return tseProfessional;
       print("Senha inválida, tente novamente");
@@ -91,8 +96,8 @@ class UrnaAdmin extends Urna {
   private void showResults(CertifiedProfessional tseProfessional) {
     try {
       print("Insira a senha da urna");
-      String pwd = readString();
-      print(tseProfessional.getFinalResult(currentElection, pwd));
+      String pwd = PluginUtils.readString();
+      print(tseProfessional.getFinalResult(election, pwd));
       print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     } catch (Warning e) {
       print(e.getMessage());

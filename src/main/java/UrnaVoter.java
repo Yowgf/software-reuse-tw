@@ -1,9 +1,11 @@
 package ElectoralSystem;
 
-class UrnaVoter extends Urna {
+class UrnaVoter {
+    private Election election;
     private Plugin plugin;
 
-    public UrnaVoter(Plugin plugin) {
+    public UrnaVoter(Election election, Plugin plugin) {
+        this.election = election;
         this.plugin = plugin;
     }
 
@@ -12,13 +14,13 @@ class UrnaVoter extends Urna {
   // menu if the voter is not found.
   public boolean menu() {
     try {
-      return plugin.menu();
+      return plugin.vote(election);
     } catch (Warning e) {
-      print(e.getMessage());
+      System.err.println(e.getMessage());
     } catch (StopTrap e) {
-      print(e.getMessage());
+      System.err.println(e.getMessage());
     } catch (Exception e) {
-      print("Erro inesperado");
+      System.err.println("Erro inesperado");
     }
     return false;
   }

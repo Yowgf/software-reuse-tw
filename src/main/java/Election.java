@@ -35,14 +35,18 @@ public class Election {
 
   // addVote handles a vote for some candidate.
   public boolean addVote(CandidateType typ, String location, String candidateNumber) {
-    var candidateId = new CandidateID(typ, location, candidateNumber);
-    boolean exists = candidates.containsKey(candidateId);
-    if (!exists) {
-      return false;
-    }
-    result.addVote(candidateId);
-    return true;
+    var candidateID = new CandidateID(typ, location, candidateNumber);
+    return addVote(candidateID);
   }
+
+    public boolean addVote(CandidateID id) {
+        boolean exists = candidates.containsKey(id);
+        if (!exists) {
+            return false;
+        }
+        result.addVote(id);
+        return true;
+    }
 
   public void addNullVote(CandidateType candidateType, String location) {
     var candidateId = new CandidateID(candidateType, location, 0);

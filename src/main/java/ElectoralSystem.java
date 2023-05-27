@@ -9,9 +9,9 @@ class ElectoralSystem {
   public ElectoralSystem(String pluginType) {
     election = new Election(electionPassword);
     addTestData(election);
-    var plugin = Plugins.factory(election, pluginType);
+    var plugin = Plugins.factory(pluginType);
     urnaAdmin = new UrnaAdmin(election);
-    urnaVoter = new UrnaVoter(plugin);
+    urnaVoter = new UrnaVoter(election, plugin);
   }
 
   public void startMenu() {

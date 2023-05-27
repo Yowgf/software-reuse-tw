@@ -7,9 +7,9 @@ public class Plugins extends Plugin {
     private ArrayList<Plugin> plugins;
 
     @Override
-    public boolean menu() {
+    public boolean vote(Election election) {
         for (var plugin : plugins) {
-            if (plugin.menu()) {
+            if (plugin.vote(election)) {
                 return true;
             }
         }
@@ -22,27 +22,26 @@ public class Plugins extends Plugin {
         return new ArrayList<CandidateID>();
     }
 
-    private Plugins(Election election, ArrayList<Plugin> plugins) {
-        super(election);
+    private Plugins(ArrayList<Plugin> plugins) {
         this.plugins = plugins;
     }
 
-    public static Plugins factory(Election election, String typ) {
+    public static Plugins factory(String typ) {
         var plugins = new ArrayList<Plugin>();
       switch (typ) {
       case "federal":
-          plugins.add(new PluginFederal(election));
+          plugins.add(new PluginFederal());
           break;
       case "municipal":
-          plugins.add(new PluginMunicipal(election));
+          plugins.add(new PluginMunicipal());
           break;
       case "todos":
-          plugins.add(new PluginFederal(election));
-          plugins.add(new PluginMunicipal(election));
+          plugins.add(new PluginFederal());
+          plugins.add(new PluginMunicipal());
           break;
       default:
           throw new IllegalArgumentException("invalid election type " + typ);
       }
-        return new Plugins(election, plugins);
+        return new Plugins(plugins);
     }
 }

@@ -4,24 +4,25 @@ import java.util.Map;
 import java.util.ArrayList;
 
 class PluginFederal extends Plugin {
-    public PluginFederal(Election election) {
-        super(election);
-        loadVoters();
+    private final ArrayList<CandidateType> voteSequence =
+        new ArrayList<CandidateType>();
+
+    public PluginFederal() {
+        PluginUtils.loadVoters(this.voterMap);
+        voteSequence.add(President.type);
+        voteSequence.add(FederalDeputy.type);
+        voteSequence.add(FederalDeputy.type);
     }
 
     @Override
-    public boolean menu() {
+    public boolean vote(Election election) {
         Voter voter = getVoter();
         if (voter == null) {
             // `true` indicates "please exit"
             return true;
         }
-        var voteSequence = new ArrayList<CandidateType>();
-        voteSequence.add(President.type);
-        voteSequence.add(FederalDeputy.type);
-        voteSequence.add(FederalDeputy.type);
         for (var candidateType : voteSequence) {
-            voteAll(voter, voteSequence);
+            PluginUtils.voteAll(election, voter, voteSequence);
         }
         return false;
     }
@@ -29,17 +30,21 @@ class PluginFederal extends Plugin {
     @Override
     public ArrayList<CandidateID>
         electionWinners(Map<CandidateID, Integer> votes) {
-        return new ArrayList<CandidateID>();
+        return PluginUtils.ElectionWinnersAbsoluteNumber(votes);
     }
 
     public Voter getVoter() {
         print("Insira seu título de eleitor:");
-        String electoralCard = readString();
+        String electoralCard = PluginUtils.readString();
         Voter voter = voterMap.get(electoralCard);
         if (voter == null) {
             print("Eleitor não encontrado.");
             return null;
         }
         return voter;
+    }
+
+    private void print(String s) {
+        System.out.println(s);
     }
 }
