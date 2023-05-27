@@ -44,34 +44,46 @@ public class ElectionResult {
   public String prettyString() {
     var s = new StringBuilder();
     s.append("\nResultado da eleição:\n\n");
-
     var candidateIDs = new ArrayList<CandidateID>();
     for (Map.Entry<CandidateID, Integer> vote : votes.entrySet()) {
       var candidateID = vote.getKey();
       candidateIDs.add(candidateID);
     }
-
-    String title = "";
-
-    // Candidates that are location specific
-    title = tableRow(new String[] {"Tipo", "Localização", "Número", "Votos"});
-    s.append(tableHeader(title.length()));
-    s.append(title);
-    for (var id : candidateIDs) {
-      var numVotes = votes.get(id);
-      s.append(
-          tableRow(
-              new String[] {
-                id.getType().name,
-                id.getLocation(),
-                String.valueOf(id.getCandidateNumber()),
-                String.valueOf(numVotes)
-              }));
-    }
-    s.append(tableFooter(title.length()));
-
+    s.append(prettyStringWinners());
+    s.append(prettyStringTable(candidateIDs));
     return s.toString();
   }
+
+    // prettyStringWinners returns a table with the election winners.
+    private String prettyStringWinners() {
+        // The plugin decides which of the candidates are winners, based on
+        // whatever rule.
+        var winnerIDs = plugin.electionWinners(votes);
+        return prettyStringTable(winnerIDs) + "\n";
+    }
+
+    // prettyStringTable returns a table with all data for given candidates, not
+    // just the winners.
+    private String prettyStringTable(ArrayList<CandidateID> candidateIDs) {
+        var s = new StringBuilder();
+        String title = "";
+        title = tableRow(new String[] {"Tipo", "Localização", "Número", "Votos"});
+        s.append(tableHeader(title.length()));
+        s.append(title);
+        for (var id : candidateIDs) {
+            var numVotes = votes.get(id);
+            s.append(
+                     tableRow(
+                              new String[] {
+                                  id.getType().name,
+                                  id.getLocation(),
+                                  String.valueOf(id.getCandidateNumber()),
+                                  String.valueOf(numVotes)
+                              }));
+        }
+        s.append(tableFooter(title.length()));
+        return s.toString();
+    }
 
   private String tableRow(String[] elems) {
     var s = new StringBuilder();
