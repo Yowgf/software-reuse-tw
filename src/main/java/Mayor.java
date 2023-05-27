@@ -1,7 +1,7 @@
 package ElectoralSystem;
 
 public class Mayor extends Candidate {
-  public static CandidateType type = new CandidateType("Prefeito", false);
+  public static CandidateType type = new CandidateType("Prefeito", true);
 
   public static class Builder {
     protected String name;

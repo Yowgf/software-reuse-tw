@@ -18,6 +18,8 @@ public class Candidate {
 
     if (number <= 0) throw new IllegalArgumentException("number must be greater or equal to 1");
 
+    if (location == null) throw new IllegalArgumentException("location mustn't be null");
+
     this.name = name;
     this.party = party;
     this.location = location;

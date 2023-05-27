@@ -13,8 +13,6 @@ public class PluginUtils {
   // the most votes.
   public static ArrayList<CandidateID> electionWinnersAbsoluteNumber(
       Map<CandidateID, Integer> votes) {
-    System.err.println("votes from plugin utils: " + votes);
-
     var winners = new HashMap<CandidateID, Integer>();
 
     // Group candidates by type and location
@@ -49,16 +47,13 @@ public class PluginUtils {
 
   public static void voteAll(
       Election election, Voter voter, ArrayList<CandidateType> voteSequence) {
-    print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
-    print("Vamos começar!\n");
-    print("OBS:\n" + "- 'nulo' para votar nulo\n" + "- 'br' para votar em branco\n");
-    print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+    print("\n" + "- 'nulo' para votar nulo\n" + "- 'br' para votar em branco\n\n");
     for (int i = 0; i < voteSequence.size(); i++) {
       boolean voteConfirmed = false;
       while (!voteConfirmed) {
         voteConfirmed = vote(election, voter, voteSequence.get(i));
       }
-      print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+      print("");
     }
   }
 
@@ -89,10 +84,6 @@ public class PluginUtils {
         }
     }
     return true;
-  }
-
-  public static void loadVoters(Map<String, Voter> voterMap) {
-    loadVoters(voterMap, "examples/voterLoad.txt");
   }
 
   public static void loadVoters(Map<String, Voter> voterMap, String votersFpath) {

@@ -9,7 +9,11 @@ public class CandidateID {
 
   public CandidateID(CandidateType typ, String location, int num) {
     this.typ = typ;
-    this.location = location;
+    if (typ.isLocationSensitive()) {
+      this.location = location;
+    } else {
+      this.location = "";
+    }
     this.candidateNum = num;
   }
 
