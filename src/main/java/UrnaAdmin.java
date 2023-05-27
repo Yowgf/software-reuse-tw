@@ -28,7 +28,6 @@ class UrnaAdmin {
       print("Certified Professional login\n");
       TSEProfessional tseProfessional = getTSEProfessional();
       if (tseProfessional == null) return;
-      print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
       boolean back = false;
       while (!back) {
         print("(1) Iniciar sessão");
@@ -61,7 +60,7 @@ class UrnaAdmin {
       tseProfessional.startSession(election, pwd);
       sessionStarted = true;
       print("Sessão inicializada");
-      print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+      print("\n");
     } catch (Warning e) {
       print(e.getMessage());
     }
@@ -93,7 +92,7 @@ class UrnaAdmin {
       // Deveria ser um hash na pratica
       if (tseProfessional.password.equals(password)) return tseProfessional;
       print("Senha inválida, tente novamente");
-      print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+      print("\n");
     }
     return null;
   }
@@ -103,7 +102,7 @@ class UrnaAdmin {
       print("Insira a senha da urna");
       String pwd = PluginUtils.readString();
       print(tseProfessional.getFinalResult(election, pwd));
-      print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+      print("\n");
     } catch (Warning e) {
       print(e.getMessage());
     }

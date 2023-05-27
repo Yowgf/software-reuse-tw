@@ -16,7 +16,6 @@ public class ElectionResult {
 
   public void addVote(CandidateID id) {
     if (!votes.containsKey(id)) {
-      System.err.println("ID not found, refreshing");
       votes.put(id, 1);
       return;
     }

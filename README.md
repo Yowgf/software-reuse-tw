@@ -20,10 +20,6 @@ Insira seu usuário:
 cert
 Insira sua senha:
 1
-
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-
 (1) Iniciar sessão
 (2) Finalizar sessão
 (3) Mostrar resultados
@@ -32,8 +28,6 @@ Insira sua senha:
 Insira a senha da urna
 pass
 Sessão inicializada
-
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
 (1) Iniciar sessão
@@ -44,39 +38,18 @@ Sessão inicializada
 Insira seu título de eleitor:
 123456789012
 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-
-Vamos começar!
-
-OBS:
 - 'nulo' para votar nulo
 - 'br' para votar em branco
 
 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-
 Vote para Presidente: 
 123
-ID not found, refreshing
-
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
 
 Vote para Deputado Federal: 
 12345
-ID not found, refreshing
-
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
 
 Vote para Deputado Federal: 
 54321
-ID not found, refreshing
-
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
 
 Insira seu título de eleitor:
 
@@ -87,10 +60,6 @@ Insira seu usuário:
 cert
 Insira sua senha:
 1
-
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-
 (1) Iniciar sessão
 (2) Finalizar sessão
 (3) Mostrar resultados
@@ -110,7 +79,6 @@ Sessão finalizada com sucesso
 3
 Insira a senha da urna
 pass
-votes from plugin utils: {Deputado Federal_MG_54321=1, Deputado Federal_MG_12345=1, Presidente_123=1}
 
 Resultado da eleição:
 
@@ -118,7 +86,7 @@ Vencedores
 ---------------------------------------------------------------------
 |Tipo            |Localização     |Número          |Votos           |
 |Deputado Federal|MG              |54321           |1               |
-|Presidente      |MG              |123             |1               |
+|Presidente      |                |123             |1               |
 ---------------------------------------------------------------------
 
 
@@ -126,18 +94,17 @@ Vencedores
 |Tipo            |Localização     |Número          |Votos           |
 |Deputado Federal|MG              |54321           |1               |
 |Deputado Federal|MG              |12345           |1               |
-|Presidente      |MG              |123             |1               |
+|Presidente      |                |123             |1               |
 ---------------------------------------------------------------------
 
 
-
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
 (1) Iniciar sessão
 (2) Finalizar sessão
 (3) Mostrar resultados
 (0) Sair
+
 ```
 
 ## Preconfigured users

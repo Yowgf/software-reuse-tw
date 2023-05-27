@@ -29,6 +29,11 @@ class ElectoralSystem {
   }
 
   private void addTestData(Election election) {
+    addTestDataFederal(election);
+    addTestDataMunicipal(election);
+  }
+
+  private void addTestDataFederal(Election election) {
     President presidentCandidate1 =
         new President.Builder().name("João").number(123).party("PDS1").build();
     President presidentCandidate2 =
@@ -44,5 +49,40 @@ class ElectoralSystem {
     election.addCandidate(federalDeputyCandidate1);
     election.addCandidate(federalDeputyCandidate2);
     election.addCandidate(federalDeputyCandidate3);
+  }
+
+  private void addTestDataMunicipal(Election election) {
+    Mayor m1 =
+        new Mayor.Builder()
+            .name("Joe")
+            .number(11)
+            .party("Republicans")
+            .city("Belo Horizonte")
+            .build();
+    Mayor m2 =
+        new Mayor.Builder()
+            .name("Mary")
+            .number(22)
+            .party("Democrats")
+            .city("Belo Horizonte")
+            .build();
+    Vereador v1 =
+        new Vereador.Builder()
+            .name("Joe vereador")
+            .number(11111)
+            .party("Republicans")
+            .city("Belo Horizonte")
+            .build();
+    Vereador v2 =
+        new Vereador.Builder()
+            .name("Mary vereador")
+            .number(22222)
+            .party("Democrats")
+            .city("Belo Horizonte")
+            .build();
+    election.addCandidate(m1);
+    election.addCandidate(m2);
+    election.addCandidate(v1);
+    election.addCandidate(v2);
   }
 }
