@@ -6,17 +6,17 @@ import java.util.Map;
 class UrnaAdmin {
   private final Map<String, TSEProfessional> TSEMap = new HashMap<>();
 
-    private Election election;    
+  private Election election;
   private boolean sessionStarted = false;
 
   public UrnaAdmin(Election election) {
-    election = election;
+    this.election = election;
     loadTestTSEProfessionals();
   }
 
-    private void print(String s) {
-        System.out.println(s);
-    }
+  private void print(String s) {
+    System.out.println(s);
+  }
 
   public void menu() {
     try {

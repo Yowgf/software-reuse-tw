@@ -1,51 +1,49 @@
 package ElectoralSystem;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.File;
-import java.util.Scanner;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class PluginUtils {
-    // ElectionWinnersAbsoluteNumber considers the winner the candidates with
-    // the most votes.
-    public static ArrayList<CandidateID> 
-        ElectionWinnersAbsoluteNumber(Map<CandidateID, Integer> votes) {
-        var winners = new HashMap<CandidateID, Integer>();
+  // ElectionWinnersAbsoluteNumber considers the winner the candidates with
+  // the most votes.
+  public static ArrayList<CandidateID> ElectionWinnersAbsoluteNumber(
+      Map<CandidateID, Integer> votes) {
+    var winners = new HashMap<CandidateID, Integer>();
 
-        // Group candidates by type and location
-        for (var entry : votes.entrySet()) {
-            // This algorithm is inefficient, but good enough for now.
-            var id = entry.getKey();
-            var numVotes = entry.getValue();
-            for (var winner : winners.entrySet()) {
-                var winnerID = winner.getKey();
-                var winnerNumVotes = winner.getValue();
-                if (winnerID.getType().name == id.getType().name
-                    && winnerID.getLocation() == id.getLocation()
-                    && numVotes > winnerNumVotes) {
-                    winners.put(new CandidateID(id.getType(), id.getLocation(), 0),
-                                numVotes);
-                }
-            }
+    // Group candidates by type and location
+    for (var entry : votes.entrySet()) {
+      // This algorithm is inefficient, but good enough for now.
+      var id = entry.getKey();
+      var numVotes = entry.getValue();
+      for (var winner : winners.entrySet()) {
+        var winnerID = winner.getKey();
+        var winnerNumVotes = winner.getValue();
+        if (winnerID.getType().name == id.getType().name
+            && winnerID.getLocation() == id.getLocation()
+            && numVotes > winnerNumVotes) {
+          winners.put(new CandidateID(id.getType(), id.getLocation(), 0), numVotes);
         }
-
-        var winnersList = new ArrayList<CandidateID>();
-        for (var winner : winners.entrySet()) {
-            winnersList.add(winner.getKey());
-        }
-        return winnersList;
+      }
     }
 
-  public static void voteAll(Election election,
-                             Voter voter,
-                             ArrayList<CandidateType> voteSequence) {
-      print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
-      print("Vamos começar!\n");
-      print("OBS:\n" + "- 'nulo' para votar nulo\n" + "- 'br' para votar em branco\n");
-      print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+    var winnersList = new ArrayList<CandidateID>();
+    for (var winner : winners.entrySet()) {
+      winnersList.add(winner.getKey());
+    }
+    return winnersList;
+  }
+
+  public static void voteAll(
+      Election election, Voter voter, ArrayList<CandidateType> voteSequence) {
+    print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+    print("Vamos começar!\n");
+    print("OBS:\n" + "- 'nulo' para votar nulo\n" + "- 'br' para votar em branco\n");
+    print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     for (int i = 0; i < voteSequence.size(); i++) {
       boolean voteConfirmed = false;
       while (!voteConfirmed) {
@@ -57,9 +55,7 @@ public class PluginUtils {
 
   // vote processes a vote for a candidate type, and returns true in case of
   // success. In case the vote was not successfully processed, returns false.
-  public static boolean vote(Election election,
-                             Voter voter,
-                             CandidateType candidateType) {
+  public static boolean vote(Election election, Voter voter, CandidateType candidateType) {
     print("Vote para " + candidateType.name + ": ");
     String vstr = readString();
     switch (vstr) {
@@ -86,9 +82,9 @@ public class PluginUtils {
     return true;
   }
 
-    public static void loadVoters(Map<String, Voter> voterMap) {
-        loadVoters(voterMap, "examples/voterLoad.txt");
-    }
+  public static void loadVoters(Map<String, Voter> voterMap) {
+    loadVoters(voterMap, "examples/voterLoad.txt");
+  }
 
   public static void loadVoters(Map<String, Voter> voterMap, String votersFpath) {
     try {
@@ -117,7 +113,7 @@ public class PluginUtils {
   }
 
   public static String readString() {
-      BufferedReader scanner = new BufferedReader(new InputStreamReader(System.in));
+    BufferedReader scanner = new BufferedReader(new InputStreamReader(System.in));
     try {
       return scanner.readLine();
     } catch (Exception e) {

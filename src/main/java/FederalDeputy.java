@@ -52,8 +52,7 @@ public class FederalDeputy extends Candidate {
               "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA",
               "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO");
 
-      if (!validStates.contains(state))
-        throw new IllegalArgumentException("state is invalid");
+      if (!validStates.contains(state)) throw new IllegalArgumentException("state is invalid");
 
       return new FederalDeputy(this.name, this.party, this.number, this.state);
     }

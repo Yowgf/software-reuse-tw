@@ -34,20 +34,10 @@ public class ElectionTest {
         new President.Builder().name("Maria").number(124).party("ED").build();
     election.addCandidate(presidentCandidate2);
     FederalDeputy federalDeputyCandidate1 =
-        new FederalDeputy.Builder()
-            .name("Carlos")
-            .number(12345)
-            .party("PDS1")
-            .state("MG")
-            .build();
+        new FederalDeputy.Builder().name("Carlos").number(12345).party("PDS1").state("MG").build();
     election.addCandidate(federalDeputyCandidate1);
     FederalDeputy federalDeputyCandidate2 =
-        new FederalDeputy.Builder()
-            .name("Cleber")
-            .number(54321)
-            .party("PDS2")
-            .state("MG")
-            .build();
+        new FederalDeputy.Builder().name("Cleber").number(54321).party("PDS2").state("MG").build();
     election.addCandidate(federalDeputyCandidate2);
     FederalDeputy federalDeputyCandidate3 =
         new FederalDeputy.Builder().name("Sofia").number(11211).party("IHC").state("MG").build();

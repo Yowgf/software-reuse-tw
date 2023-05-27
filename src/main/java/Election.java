@@ -39,14 +39,14 @@ public class Election {
     return addVote(candidateID);
   }
 
-    public boolean addVote(CandidateID id) {
-        boolean exists = candidates.containsKey(id);
-        if (!exists) {
-            return false;
-        }
-        result.addVote(id);
-        return true;
+  public boolean addVote(CandidateID id) {
+    boolean exists = candidates.containsKey(id);
+    if (!exists) {
+      return false;
     }
+    result.addVote(id);
+    return true;
+  }
 
   public void addNullVote(CandidateType candidateType, String location) {
     var candidateId = new CandidateID(candidateType, location, 0);

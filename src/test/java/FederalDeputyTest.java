@@ -13,12 +13,7 @@ public class FederalDeputyTest {
     String state = "MG";
 
     FederalDeputy fedDeputy =
-        new FederalDeputy.Builder()
-            .name(name)
-            .party(party)
-            .number(number)
-            .state(state)
-            .build();
+        new FederalDeputy.Builder().name(name).party(party).number(number).state(state).build();
 
     assertTrue(fedDeputy.getName().equals(name));
     assertTrue(fedDeputy.getParty().equals(party));

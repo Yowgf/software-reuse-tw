@@ -8,11 +8,11 @@ public class ElectionResult {
   private Map<CandidateID, Integer> votes = new HashMap<CandidateID, Integer>();
   private Map<CandidateID, Integer> nullVotes = new HashMap<CandidateID, Integer>();
   private Map<CandidateID, Integer> protestVotes = new HashMap<CandidateID, Integer>();
-    private Plugin plugin;
+  private Plugin plugin;
 
-    public ElectionResult(Plugin plugin) {
-        this.plugin = plugin;
-    }
+  public ElectionResult(Plugin plugin) {
+    this.plugin = plugin;
+  }
 
   public void addVote(CandidateID id) {
     if (!votes.containsKey(id)) {
@@ -54,36 +54,36 @@ public class ElectionResult {
     return s.toString();
   }
 
-    // prettyStringWinners returns a table with the election winners.
-    private String prettyStringWinners() {
-        // The plugin decides which of the candidates are winners, based on
-        // whatever rule.
-        var winnerIDs = plugin.electionWinners(votes);
-        return prettyStringTable(winnerIDs) + "\n";
-    }
+  // prettyStringWinners returns a table with the election winners.
+  private String prettyStringWinners() {
+    // The plugin decides which of the candidates are winners, based on
+    // whatever rule.
+    var winnerIDs = plugin.electionWinners(votes);
+    return prettyStringTable(winnerIDs) + "\n";
+  }
 
-    // prettyStringTable returns a table with all data for given candidates, not
-    // just the winners.
-    private String prettyStringTable(ArrayList<CandidateID> candidateIDs) {
-        var s = new StringBuilder();
-        String title = "";
-        title = tableRow(new String[] {"Tipo", "Localização", "Número", "Votos"});
-        s.append(tableHeader(title.length()));
-        s.append(title);
-        for (var id : candidateIDs) {
-            var numVotes = votes.get(id);
-            s.append(
-                     tableRow(
-                              new String[] {
-                                  id.getType().name,
-                                  id.getLocation(),
-                                  String.valueOf(id.getCandidateNumber()),
-                                  String.valueOf(numVotes)
-                              }));
-        }
-        s.append(tableFooter(title.length()));
-        return s.toString();
+  // prettyStringTable returns a table with all data for given candidates, not
+  // just the winners.
+  private String prettyStringTable(ArrayList<CandidateID> candidateIDs) {
+    var s = new StringBuilder();
+    String title = "";
+    title = tableRow(new String[] {"Tipo", "Localização", "Número", "Votos"});
+    s.append(tableHeader(title.length()));
+    s.append(title);
+    for (var id : candidateIDs) {
+      var numVotes = votes.get(id);
+      s.append(
+          tableRow(
+              new String[] {
+                id.getType().name,
+                id.getLocation(),
+                String.valueOf(id.getCandidateNumber()),
+                String.valueOf(numVotes)
+              }));
     }
+    s.append(tableFooter(title.length()));
+    return s.toString();
+  }
 
   private String tableRow(String[] elems) {
     var s = new StringBuilder();

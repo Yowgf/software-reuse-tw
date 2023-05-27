@@ -43,6 +43,6 @@ public class Candidate {
   // getType returns a candidate type, which should encompass information like
   // if the candidate is running for elections in a specific location.
   public CandidateType getType() {
-      return new CandidateType("undefined", false);
+    return new CandidateType("undefined", false);
   }
 }
