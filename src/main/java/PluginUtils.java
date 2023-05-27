@@ -13,6 +13,8 @@ public class PluginUtils {
   // the most votes.
   public static ArrayList<CandidateID> electionWinnersAbsoluteNumber(
       Map<CandidateID, Integer> votes) {
+    System.err.println("votes from plugin utils: " + votes);
+
     var winners = new HashMap<CandidateID, Integer>();
 
     // Group candidates by type and location
@@ -26,15 +28,15 @@ public class PluginUtils {
         var winnerNumVotes = winner.getValue();
         if (winnerID.getType().name == id.getType().name
             && winnerID.getLocation() == id.getLocation()) {
-            foundExisting = true;
-            if (numVotes > winnerNumVotes) {
-                winners.put(id, numVotes);
-                winners.remove(winnerID);
-            }
+          foundExisting = true;
+          if (numVotes > winnerNumVotes) {
+            winners.put(id, numVotes);
+            winners.remove(winnerID);
+          }
         }
       }
       if (!foundExisting) {
-          winners.put(id, numVotes);
+        winners.put(id, numVotes);
       }
     }
 

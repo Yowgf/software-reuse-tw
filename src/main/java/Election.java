@@ -42,7 +42,7 @@ public class Election {
     return addVote(candidateType, location, String.valueOf(num));
   }
 
-    // addVote overload
+  // addVote overload
   public boolean addVote(CandidateType typ, String location, String candidateNumber) {
     var candidateID = new CandidateID(typ, location, candidateNumber);
     return addVote(candidateID);

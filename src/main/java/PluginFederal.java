@@ -26,6 +26,7 @@ class PluginFederal extends Plugin {
 
   @Override
   public ArrayList<CandidateID> electionWinners(Map<CandidateID, Integer> votes) {
+    System.err.println("votes from plugin: " + votes);
     return PluginUtils.electionWinnersAbsoluteNumber(votes);
   }
 

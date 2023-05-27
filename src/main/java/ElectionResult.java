@@ -15,13 +15,13 @@ public class ElectionResult {
   }
 
   public void addVote(CandidateID id) {
-      System.err.println("Adding vote for candidate id " + id);
+    System.err.println("Adding vote for candidate id " + id);
     if (!votes.containsKey(id)) {
       System.err.println("ID not found, refreshing");
       votes.put(id, 1);
       return;
     }
-      System.err.println("ID found, adding one");
+    System.err.println("ID found, adding one");
     var numVotes = votes.get(id);
     votes.put(id, numVotes + 1);
   }
@@ -61,12 +61,13 @@ public class ElectionResult {
   private String prettyStringWinners() {
     // The plugin decides which of the candidates are winners, based on
     // whatever rule.
+    System.err.println("Votes: " + votes);
     var winnerIDs = plugin.electionWinners(votes);
-    return prettyStringTable(winnerIDs) + "\n";
+    System.err.println("Winners: " + winnerIDs);
+    return "Vencedores\n" + prettyStringTable(winnerIDs) + "\n";
   }
 
-  // prettyStringTable returns a table with all data for given candidates, not
-  // just the winners.
+  // prettyStringTable returns a table with all data for given candidates.
   private String prettyStringTable(ArrayList<CandidateID> candidateIDs) {
     var s = new StringBuilder();
     String title = "";

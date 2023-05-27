@@ -1,7 +1,9 @@
 package ElectoralSystem;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Plugins extends Plugin {
   private ArrayList<Plugin> plugins;
@@ -18,29 +20,34 @@ public class Plugins extends Plugin {
 
   @Override
   public ArrayList<CandidateID> electionWinners(Map<CandidateID, Integer> votes) {
-    return new ArrayList<CandidateID>();
+    // Merge all winners, excluding duplicates.
+    Set<CandidateID> set = new LinkedHashSet<>();
+    for (var plugin : plugins) {
+      set.addAll(plugin.electionWinners(votes));
+    }
+    return new ArrayList<>(set);
   }
 
   private Plugins(ArrayList<Plugin> plugins) {
     this.plugins = plugins;
   }
 
-  public static Plugins factory(String typ) {
-    var plugins = new ArrayList<Plugin>();
+  public static Plugin factory(String typ) {
     switch (typ) {
       case "federal":
-        plugins.add(new PluginFederal());
-        break;
+        System.out.println("Using federal plugin");
+        return new PluginFederal();
       case "municipal":
-        plugins.add(new PluginMunicipal());
-        break;
+        System.out.println("Using municipal plugin");
+        return new PluginMunicipal();
       case "todos":
+        var plugins = new ArrayList<Plugin>();
+        System.out.println("Using todos plugin");
         plugins.add(new PluginFederal());
         plugins.add(new PluginMunicipal());
-        break;
+        return new Plugins(plugins);
       default:
         throw new IllegalArgumentException("invalid election type " + typ);
     }
-    return new Plugins(plugins);
   }
 }
