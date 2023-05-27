@@ -9,43 +9,142 @@ This project uses `gradle`. The following gradle rules are actively used:
 - `gradle fatjar` to build the .jar at `./build/libs/`
 - `gradle test` to execute whatever test suites we have at the moment
 
-After this point, everything is old docs and might not be accurate
----
+## Example run
 
-## Como utilizar
+```shell
+>> gradle fatjar
+>> java -jar ./build/libs/software-reuse-tw.jar federal
+Certified Professional login
 
+Insira seu usuário:
+cert
+Insira sua senha:
+1
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+(1) Iniciar sessão
+(2) Finalizar sessão
+(3) Mostrar resultados
+(0) Sair
+1
+Insira a senha da urna
+pass
+Sessão inicializada
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+(1) Iniciar sessão
+(2) Finalizar sessão
+(3) Mostrar resultados
+(0) Sair
+0
+Insira seu título de eleitor:
+123456789012
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+Vamos começar!
 
 OBS:
+- 'nulo' para votar nulo
+- 'br' para votar em branco
 
-- O sistema já vem inicializado com 2 candidatos a presidente e 3 a deputado federal
-- O sistema já vem com os dois gestores (de sessão e de candidaturas)
-- O sistema já vem com todos os eleitores possíveis para utilizá-los basta checar o arquivo `voterLoad.txt`
 
-No menu inicial para gerenciar candidatos e eleição siga pela opção 2:
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-- User: `emp` , Password: `12345` -> Cadastro e remoção de candidatos da eleição
-- User: `cert` , Password: `54321` -> Inicialização/finalização da eleição (liberar pra poder votar) e mostrar o resultado ao final da eleição.
 
-Além da senha de usuário é necessário a senha da eleição para completar operações relacionadas a gestão da eleição ou candidatos. Essa senha é a palavra `password`
+Vote para Presidente: 
+123
+ID not found, refreshing
 
-Para votar também existe um eleitor com o título de eleitor nº 123456789012 que pode votar nos candidatos pré-cadastrados
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-## Execução teste
 
-Para uma execução teste podemos seguir o seguinte passo:
+Vote para Deputado Federal: 
+12345
+ID not found, refreshing
 
-- Ao iniciar a aplicação selecionar a opção 2 e logar com o user `cert`
-- Escolher a opção 1 e inserir a senha da urna (`password`) para iniciar a votação
-- Escolher a opção 0 para voltar ao menu inicial
-- Escolher votar (opção 1) e inserir o nº `123456789012` do eleitor de teste
-- Selecionar sim e votar respectivamente `123` , `12345` e `br`
-- Escolher votar (opção 1) e inserir o nº `268888719264` (outro eleitor de teste)
-- Selecionar sim e votar respectivamente `123` , `54321` e `12345`
-- Escolher votar (opção 1) e inserir o nº `638991919941` (outro eleitor de teste)
-- Selecionar sim e votar respectivamente `000` , `12345` e `00000`
-- Escolher votar (opção 1) e inserir o nº `965575671024` (outro eleitor de teste)
-- Selecionar sim e votar respectivamente `123` , `12345` e `00000`
-- No menu inicial, selecionar a opção 2 e logar com o user `cert`
-- Escolher a opção 2 e inserir a senha da urna (`password`) para encerrar a votação
-- Escolher a opção 3 e inserir a senha da urna (`password`) para mostrar o resultado final da votação
-- Escolher a opção 0 duas vezes para encerrar a aplicação
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+Vote para Deputado Federal: 
+54321
+ID not found, refreshing
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+Insira seu título de eleitor:
+
+Eleitor não encontrado.
+Certified Professional login
+
+Insira seu usuário:
+cert
+Insira sua senha:
+1
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+(1) Iniciar sessão
+(2) Finalizar sessão
+(3) Mostrar resultados
+(0) Sair
+2
+Insira a senha da urna:
+pass
+Sessão finalizada com sucesso
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+(1) Iniciar sessão
+(2) Finalizar sessão
+(3) Mostrar resultados
+(0) Sair
+3
+Insira a senha da urna
+pass
+votes from plugin utils: {Deputado Federal_MG_54321=1, Deputado Federal_MG_12345=1, Presidente_123=1}
+
+Resultado da eleição:
+
+Vencedores
+---------------------------------------------------------------------
+|Tipo            |Localização     |Número          |Votos           |
+|Deputado Federal|MG              |54321           |1               |
+|Presidente      |MG              |123             |1               |
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+|Tipo            |Localização     |Número          |Votos           |
+|Deputado Federal|MG              |54321           |1               |
+|Deputado Federal|MG              |12345           |1               |
+|Presidente      |MG              |123             |1               |
+---------------------------------------------------------------------
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+(1) Iniciar sessão
+(2) Finalizar sessão
+(3) Mostrar resultados
+(0) Sair
+```
+
+## Preconfigured users
+
+Use `cert` to login as a certified professional. Use as password the digit
+`1`. The _Urna_ password is `pass`.
+
+The file `examples/voterLoad.txt` defines all the voters loaded by the Federal
+and Municipal plugins. Please use one of those when trying out one of these
+plugins.
