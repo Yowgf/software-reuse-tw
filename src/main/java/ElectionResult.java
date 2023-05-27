@@ -15,13 +15,11 @@ public class ElectionResult {
   }
 
   public void addVote(CandidateID id) {
-    System.err.println("Adding vote for candidate id " + id);
     if (!votes.containsKey(id)) {
       System.err.println("ID not found, refreshing");
       votes.put(id, 1);
       return;
     }
-    System.err.println("ID found, adding one");
     var numVotes = votes.get(id);
     votes.put(id, numVotes + 1);
   }
@@ -61,9 +59,7 @@ public class ElectionResult {
   private String prettyStringWinners() {
     // The plugin decides which of the candidates are winners, based on
     // whatever rule.
-    System.err.println("Votes: " + votes);
     var winnerIDs = plugin.electionWinners(votes);
-    System.err.println("Winners: " + winnerIDs);
     return "Vencedores\n" + prettyStringTable(winnerIDs) + "\n";
   }
 

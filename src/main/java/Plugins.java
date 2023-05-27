@@ -33,21 +33,22 @@ public class Plugins extends Plugin {
   }
 
   public static Plugin factory(String typ) {
+    var plugins = new ArrayList<Plugin>();
     switch (typ) {
+      case "":
       case "federal":
-        System.out.println("Using federal plugin");
-        return new PluginFederal();
+        plugins.add(new PluginFederal());
+        break;
       case "municipal":
-        System.out.println("Using municipal plugin");
-        return new PluginMunicipal();
+        plugins.add(new PluginMunicipal());
+        break;
       case "todos":
-        var plugins = new ArrayList<Plugin>();
-        System.out.println("Using todos plugin");
         plugins.add(new PluginFederal());
         plugins.add(new PluginMunicipal());
-        return new Plugins(plugins);
+        break;
       default:
         throw new IllegalArgumentException("invalid election type " + typ);
     }
+    return new Plugins(plugins);
   }
 }
