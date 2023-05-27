@@ -11,7 +11,7 @@ public class ElectionTest {
   public void isValidTest() {
     String electionPassword = "password";
 
-    Election currentElection = new Election(electionPassword);
+    Election currentElection = new Election(electionPassword, null);
 
     assertTrue(currentElection.isValid(electionPassword));
     assertFalse(currentElection.isValid("wrong"));
@@ -21,7 +21,7 @@ public class ElectionTest {
   public void testShowFinalResult() {
     String electionPassword = "password";
 
-    Election election = new Election(electionPassword);
+    Election election = new Election(electionPassword, null);
 
     Voter v1 = new Voter.Builder().name("v1").electoralCard("123456789012").location("MG").build();
     Voter v2 = new Voter.Builder().name("v2").electoralCard("223456789022").location("MG").build();

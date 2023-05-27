@@ -3,6 +3,11 @@ package ElectoralSystem;
 import java.util.HashMap;
 import java.util.Map;
 
+// UrnaAdmin represents the backend where an administrator can start or end an
+// election using their credentials.
+//
+// TODO: don't use anything TSE-specific, everything should be just
+// CertifiedProfessional -aholmqusit 2023-05-27
 class UrnaAdmin {
   private final Map<String, TSEProfessional> TSEMap = new HashMap<>();
 
@@ -20,7 +25,7 @@ class UrnaAdmin {
 
   public void menu() {
     try {
-      print("TSE login\n");
+      print("Certified Professional login\n");
       TSEProfessional tseProfessional = getTSEProfessional();
       if (tseProfessional == null) return;
       print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");

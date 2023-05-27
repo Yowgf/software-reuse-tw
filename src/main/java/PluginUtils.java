@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class PluginUtils {
   // ElectionWinnersAbsoluteNumber considers the winner the candidates with
   // the most votes.
-  public static ArrayList<CandidateID> ElectionWinnersAbsoluteNumber(
+  public static ArrayList<CandidateID> electionWinnersAbsoluteNumber(
       Map<CandidateID, Integer> votes) {
     var winners = new HashMap<CandidateID, Integer>();
 
@@ -20,14 +20,21 @@ public class PluginUtils {
       // This algorithm is inefficient, but good enough for now.
       var id = entry.getKey();
       var numVotes = entry.getValue();
+      var foundExisting = false;
       for (var winner : winners.entrySet()) {
         var winnerID = winner.getKey();
         var winnerNumVotes = winner.getValue();
         if (winnerID.getType().name == id.getType().name
-            && winnerID.getLocation() == id.getLocation()
-            && numVotes > winnerNumVotes) {
-          winners.put(new CandidateID(id.getType(), id.getLocation(), 0), numVotes);
+            && winnerID.getLocation() == id.getLocation()) {
+            foundExisting = true;
+            if (numVotes > winnerNumVotes) {
+                winners.put(id, numVotes);
+                winners.remove(winnerID);
+            }
         }
+      }
+      if (!foundExisting) {
+          winners.put(id, numVotes);
       }
     }
 

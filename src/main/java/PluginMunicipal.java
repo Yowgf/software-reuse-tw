@@ -20,15 +20,13 @@ class PluginMunicipal extends Plugin {
       // `true` indicates "please exit"
       return true;
     }
-    for (var candidateType : voteSequence) {
-      PluginUtils.voteAll(election, voter, voteSequence);
-    }
+    PluginUtils.voteAll(election, voter, voteSequence);
     return false;
   }
 
   @Override
   public ArrayList<CandidateID> electionWinners(Map<CandidateID, Integer> votes) {
-    return PluginUtils.ElectionWinnersAbsoluteNumber(votes);
+    return PluginUtils.electionWinnersAbsoluteNumber(votes);
   }
 
   public Voter getVoter() {

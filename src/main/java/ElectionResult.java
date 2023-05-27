@@ -15,10 +15,13 @@ public class ElectionResult {
   }
 
   public void addVote(CandidateID id) {
+      System.err.println("Adding vote for candidate id " + id);
     if (!votes.containsKey(id)) {
-      votes.put(id, 0);
+      System.err.println("ID not found, refreshing");
+      votes.put(id, 1);
       return;
     }
+      System.err.println("ID found, adding one");
     var numVotes = votes.get(id);
     votes.put(id, numVotes + 1);
   }

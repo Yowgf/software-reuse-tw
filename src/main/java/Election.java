@@ -23,6 +23,15 @@ public class Election {
     return this.password.equals(password);
   }
 
+  public boolean addVote(CandidateID id) {
+    boolean exists = candidates.containsKey(id);
+    if (!exists) {
+      return false;
+    }
+    result.addVote(id);
+    return true;
+  }
+
   // addVote overload
   public boolean addVote(CandidateType candidateType, int num) {
     return addVote(candidateType, "", num);
@@ -33,19 +42,10 @@ public class Election {
     return addVote(candidateType, location, String.valueOf(num));
   }
 
-  // addVote handles a vote for some candidate.
+    // addVote overload
   public boolean addVote(CandidateType typ, String location, String candidateNumber) {
     var candidateID = new CandidateID(typ, location, candidateNumber);
     return addVote(candidateID);
-  }
-
-  public boolean addVote(CandidateID id) {
-    boolean exists = candidates.containsKey(id);
-    if (!exists) {
-      return false;
-    }
-    result.addVote(id);
-    return true;
   }
 
   public void addNullVote(CandidateType candidateType, String location) {
