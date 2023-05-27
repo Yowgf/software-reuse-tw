@@ -108,10 +108,6 @@ public class Election {
     var presidentRank = new ArrayList<President>();
     var federalDeputyRank = new ArrayList<FederalDeputy>();
 
-    var builder = new StringBuilder();
-    builder.append("Resultado da eleicao:\n");
-    builder.append(result.prettyString());
-
-    return builder.toString();
+    return result.prettyString();
   }
 }

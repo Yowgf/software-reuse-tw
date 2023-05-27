@@ -100,7 +100,7 @@ class UrnaAdmin extends Urna {
   }
 
   private void loadTestTSEProfessionals() {
-    TSEMap.put("cert", new CertifiedProfessional.Builder().user("cert").password("54321").build());
-    TSEMap.put("emp", new TSEEmployee.Builder().user("emp").password("12345").build());
+    TSEMap.put("cert", new CertifiedProfessional.Builder().user("cert").password("1").build());
+    TSEMap.put("emp", new TSEEmployee.Builder().user("emp").password("1").build());
   }
 }
