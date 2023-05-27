@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+// Election follows a microkernal architecture, where each type of election is a
+// plugin.
 public class Election {
   private final String password;
 
@@ -12,30 +14,13 @@ public class Election {
   private ElectionResult result = new ElectionResult();
   private Map<CandidateID, Candidate> candidates = new HashMap<CandidateID, Candidate>();
 
-  public static class Builder {
-    protected String password;
-
-    public Builder password(String password) {
-      this.password = password;
-      return this;
-    }
-
-    public Election build() {
-      if (password == null) throw new IllegalArgumentException("password mustn't be null");
-
-      if (password.isEmpty()) throw new IllegalArgumentException("password mustn't be empty");
-
-      return new Election(this.password);
-    }
+  public Election(String password) {
+    this.password = password;
+    this.finished = false;
   }
 
   public Boolean isValid(String password) {
     return this.password.equals(password);
-  }
-
-  protected Election(String password) {
-    this.password = password;
-    this.finished = false;
   }
 
   // addVote overload

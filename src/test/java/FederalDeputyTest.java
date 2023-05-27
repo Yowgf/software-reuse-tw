@@ -10,19 +10,19 @@ public class FederalDeputyTest {
     String name = "Alberto";
     String party = "PV";
     int number = 1324;
-    String location = "MG";
+    String state = "MG";
 
     FederalDeputy fedDeputy =
         new FederalDeputy.Builder()
             .name(name)
             .party(party)
             .number(number)
-            .location(location)
+            .state(state)
             .build();
 
     assertTrue(fedDeputy.getName().equals(name));
     assertTrue(fedDeputy.getParty().equals(party));
     assertTrue(fedDeputy.getNumber() == number);
-    assertTrue(fedDeputy.getLocation().equals(location));
+    assertTrue(fedDeputy.getLocation().equals(state));
   }
 }

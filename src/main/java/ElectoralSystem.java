@@ -6,11 +6,12 @@ class ElectoralSystem {
   private String electionPassword = "pass";
   private Election election;
 
-  public ElectoralSystem() {
-    election = new Election.Builder().password(electionPassword).build();
+  public ElectoralSystem(String pluginType) {
+    election = new Election(electionPassword);
     addTestData(election);
+    var plugin = Plugins.factory(election, pluginType);
     urnaAdmin = new UrnaAdmin(election);
-    urnaVoter = new UrnaVoter(election, "examples/voterLoad.txt");
+    urnaVoter = new UrnaVoter(plugin);
   }
 
   public void startMenu() {
@@ -37,17 +38,22 @@ class ElectoralSystem {
             .name("Carlos")
             .number(12345)
             .party("PDS1")
-            .location("MG")
+            .state("MG")
             .build();
     FederalDeputy federalDeputyCandidate2 =
         new FederalDeputy.Builder()
             .name("Cleber")
             .number(54321)
             .party("PDS2")
-            .location("MG")
+            .state("MG")
             .build();
     FederalDeputy federalDeputyCandidate3 =
-        new FederalDeputy.Builder().name("Sofia").number(11211).party("IHC").location("MG").build();
+        new FederalDeputy.Builder()
+        .name("Sofia")
+        .number(11211)
+        .party("IHC")
+        .state("MG")
+        .build();
     election.addCandidate(presidentCandidate1);
     election.addCandidate(presidentCandidate2);
     election.addCandidate(federalDeputyCandidate1);

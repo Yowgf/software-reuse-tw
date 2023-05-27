@@ -9,7 +9,7 @@ public class FederalDeputy extends Candidate {
     protected String name;
     protected String party;
     protected int number;
-    protected String location;
+    protected String state;
 
     public Builder name(String name) {
       this.name = name;
@@ -26,8 +26,8 @@ public class FederalDeputy extends Candidate {
       return this;
     }
 
-    public Builder location(String location) {
-      this.location = location;
+    public Builder state(String state) {
+      this.state = state;
       return this;
     }
 
@@ -43,24 +43,24 @@ public class FederalDeputy extends Candidate {
 
       if (party.isEmpty()) throw new IllegalArgumentException("party mustn't be empty");
 
-      if (location == null) throw new IllegalArgumentException("location mustn't be null");
+      if (state == null) throw new IllegalArgumentException("state mustn't be null");
 
-      if (location.isEmpty()) throw new IllegalArgumentException("location mustn't be empty");
+      if (state.isEmpty()) throw new IllegalArgumentException("state mustn't be empty");
 
-      Set<String> validLocations =
+      Set<String> validStates =
           Set.of(
               "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA",
               "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO");
 
-      if (!validLocations.contains(location))
-        throw new IllegalArgumentException("location is invalid");
+      if (!validStates.contains(state))
+        throw new IllegalArgumentException("state is invalid");
 
-      return new FederalDeputy(this.name, this.party, this.number, this.location);
+      return new FederalDeputy(this.name, this.party, this.number, this.state);
     }
   }
 
-  protected FederalDeputy(String name, String party, int number, String location) {
-    super(name, party, number, location);
+  protected FederalDeputy(String name, String party, int number, String state) {
+    super(name, party, number, state);
   }
 
   @Override

@@ -40,38 +40,19 @@ public class ElectionResult {
     var s = new StringBuilder();
     s.append("\nResultado da eleição:\n\n");
 
-    var candidateIDsLocation = new ArrayList<CandidateID>();
-    var candidateIDsNoLocation = new ArrayList<CandidateID>();
+    var candidateIDs = new ArrayList<CandidateID>();
     for (Map.Entry<CandidateID, Integer> vote : votes.entrySet()) {
       var candidateID = vote.getKey();
-      if (candidateID.getType().isLocationSensitive()) {
-        candidateIDsLocation.add(candidateID);
-      } else {
-        candidateIDsNoLocation.add(candidateID);
-      }
+      candidateIDs.add(candidateID);
     }
 
     String title = "";
-
-    // Candidates that are not location specific
-    title = tableRow(new String[] {"Tipo", "Número", "Votos"});
-    s.append(tableHeader(title.length()));
-    s.append(title);
-    for (var id : candidateIDsNoLocation) {
-      var numVotes = votes.get(id);
-      s.append(
-          tableRow(
-              new String[] {
-                id.getType().name, String.valueOf(id.getCandidateNumber()), String.valueOf(numVotes)
-              }));
-    }
-    s.append(tableFooter(title.length()));
 
     // Candidates that are location specific
     title = tableRow(new String[] {"Tipo", "Localização", "Número", "Votos"});
     s.append(tableHeader(title.length()));
     s.append(title);
-    for (var id : candidateIDsLocation) {
+    for (var id : candidateIDs) {
       var numVotes = votes.get(id);
       s.append(
           tableRow(
