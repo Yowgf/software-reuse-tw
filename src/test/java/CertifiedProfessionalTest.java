@@ -24,7 +24,7 @@ public class CertifiedProfessionalTest {
         new CertifiedProfessional.Builder().user(user).password(password).build();
 
     String electionPassword = "123";
-    Election election = new Election.Builder().password(electionPassword).build();
+    Election election = new Election(electionPassword, null);
 
     certifiedProfessional.startSession(election, electionPassword);
     assertFalse(election.getFinished());
@@ -38,7 +38,7 @@ public class CertifiedProfessionalTest {
         new CertifiedProfessional.Builder().user(user).password(password).build();
 
     String electionPassword = "123";
-    Election election = new Election.Builder().password(electionPassword).build();
+    Election election = new Election(electionPassword, null);
 
     Error exception =
         assertThrows(
@@ -61,7 +61,7 @@ public class CertifiedProfessionalTest {
         new CertifiedProfessional.Builder().user(user).password(password).build();
 
     String electionPassword = "123";
-    Election election = new Election.Builder().password(electionPassword).build();
+    Election election = new Election(electionPassword, null);
 
     certifiedProfessional.startSession(election, electionPassword);
     certifiedProfessional.endSession(election, electionPassword);
@@ -76,7 +76,7 @@ public class CertifiedProfessionalTest {
         new CertifiedProfessional.Builder().user(user).password(password).build();
 
     String electionPassword = "123";
-    Election election = new Election.Builder().password(electionPassword).build();
+    Election election = new Election(electionPassword, null);
 
     certifiedProfessional.startSession(election, electionPassword);
     Warning exception =

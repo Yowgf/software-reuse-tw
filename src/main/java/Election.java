@@ -5,37 +5,31 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+// Election follows a microkernal architecture, where each type of election is a
+// plugin.
 public class Election {
   private final String password;
-
   private boolean finished;
-  private ElectionResult result = new ElectionResult();
+  private ElectionResult result;
   private Map<CandidateID, Candidate> candidates = new HashMap<CandidateID, Candidate>();
 
-  public static class Builder {
-    protected String password;
-
-    public Builder password(String password) {
-      this.password = password;
-      return this;
-    }
-
-    public Election build() {
-      if (password == null) throw new IllegalArgumentException("password mustn't be null");
-
-      if (password.isEmpty()) throw new IllegalArgumentException("password mustn't be empty");
-
-      return new Election(this.password);
-    }
+  public Election(String password, Plugin plugin) {
+    this.password = password;
+    this.result = new ElectionResult(plugin);
+    this.finished = false;
   }
 
   public Boolean isValid(String password) {
     return this.password.equals(password);
   }
 
-  protected Election(String password) {
-    this.password = password;
-    this.finished = false;
+  public boolean addVote(CandidateID id) {
+    boolean exists = candidates.containsKey(id);
+    if (!exists) {
+      return false;
+    }
+    result.addVote(id);
+    return true;
   }
 
   // addVote overload
@@ -48,15 +42,10 @@ public class Election {
     return addVote(candidateType, location, String.valueOf(num));
   }
 
-  // addVote handles a vote for some candidate.
+  // addVote overload
   public boolean addVote(CandidateType typ, String location, String candidateNumber) {
-    var candidateId = new CandidateID(typ, location, candidateNumber);
-    boolean exists = candidates.containsKey(candidateId);
-    if (!exists) {
-      return false;
-    }
-    result.addVote(candidateId);
-    return true;
+    var candidateID = new CandidateID(typ, location, candidateNumber);
+    return addVote(candidateID);
   }
 
   public void addNullVote(CandidateType candidateType, String location) {
@@ -108,10 +97,6 @@ public class Election {
     var presidentRank = new ArrayList<President>();
     var federalDeputyRank = new ArrayList<FederalDeputy>();
 
-    var builder = new StringBuilder();
-    builder.append("Resultado da eleicao:\n");
-    builder.append(result.prettyString());
-
-    return builder.toString();
+    return result.prettyString();
   }
 }
