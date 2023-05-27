@@ -8,6 +8,11 @@ public class ElectionResult {
   private Map<CandidateID, Integer> votes = new HashMap<CandidateID, Integer>();
   private Map<CandidateID, Integer> nullVotes = new HashMap<CandidateID, Integer>();
   private Map<CandidateID, Integer> protestVotes = new HashMap<CandidateID, Integer>();
+    private Plugin plugin;
+
+    public ElectionResult(Plugin plugin) {
+        this.plugin = plugin;
+    }
 
   public void addVote(CandidateID id) {
     if (!votes.containsKey(id)) {

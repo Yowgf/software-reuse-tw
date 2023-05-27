@@ -9,13 +9,13 @@ import java.util.Map;
 // plugin.
 public class Election {
   private final String password;
-
   private boolean finished;
-  private ElectionResult result = new ElectionResult();
+  private ElectionResult result;
   private Map<CandidateID, Candidate> candidates = new HashMap<CandidateID, Candidate>();
 
-  public Election(String password) {
+  public Election(String password, Plugin plugin) {
     this.password = password;
+    this.result = new ElectionResult(plugin);
     this.finished = false;
   }
 
