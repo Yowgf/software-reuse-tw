@@ -9,6 +9,7 @@ class PluginUniversidade extends Plugin {
   public PluginUniversidade() {
     PluginUtils.loadVoters(this.voterMap, "examples/voters-universidade.txt");
     voteSequence.add(ChefeDepartamento.type);
+    voteSequence.add(RepresentanteUniaoEstudantil.type);
   }
 
   @Override
