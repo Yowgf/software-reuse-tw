@@ -1,7 +1,25 @@
 package ElectoralSystem;
 
 // Gerencia o processo eleitoral
-public class CertifiedProfessional extends TSEProfessional {
+public class CertifiedProfessional {
+
+  protected final String user;
+
+  protected final String password;
+
+  protected CertifiedProfessional(String user, String password) {
+    this.user = user;
+    this.password = password;
+  }
+
+  public String getUser() {
+    return this.user;
+  }
+
+  public String getPassword() {
+    return this.password;
+  }
+
   public void startSession(Election election, String password) {
     election.start(password);
   }
@@ -41,11 +59,4 @@ public class CertifiedProfessional extends TSEProfessional {
     }
   }
 
-  protected CertifiedProfessional(String user, String password) {
-    super(user, password);
-  }
-
-  public String getUser() {
-    return this.user;
-  }
 }
