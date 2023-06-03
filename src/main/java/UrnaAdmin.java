@@ -110,6 +110,5 @@ class UrnaAdmin {
 
   private void loadTestTSEProfessionals() {
     TSEMap.put("cert", new CertifiedProfessional.Builder().user("cert").password("1").build());
-    TSEMap.put("emp", new TSEEmployee.Builder().user("emp").password("1").build());
   }
 }
