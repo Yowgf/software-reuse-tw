@@ -31,6 +31,7 @@ class ElectoralSystem {
   private void addTestData(Election election) {
     addTestDataFederal(election);
     addTestDataMunicipal(election);
+    addTestDataUniversidade(election);
   }
 
   private void addTestDataFederal(Election election) {
@@ -85,4 +86,15 @@ class ElectoralSystem {
     election.addCandidate(v1);
     election.addCandidate(v2);
   }
+
+  private void addTestDataUniversidade(Election election) {
+    ChefeDepartamento ChefeDepartamentoCandidate1 =
+        new ChefeDepartamento.Builder().name("Daniel").number(23).party("DCC").build();
+    ChefeDepartamento ChefeDepartamentoCandidate2 =
+        new ChefeDepartamento.Builder().name("Leticia").number(24).party("DCC").build();
+  
+    election.addCandidate(ChefeDepartamentoCandidate1);
+    election.addCandidate(ChefeDepartamentoCandidate2);
+  }
+
 }
