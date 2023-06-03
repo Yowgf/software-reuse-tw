@@ -7,7 +7,8 @@ class PluginUniversidade extends Plugin {
   private final ArrayList<CandidateType> voteSequence = new ArrayList<CandidateType>();
 
   public PluginUniversidade() {
-    PluginUtils.loadVoters(this.voterMap, "examples/voters-municipal.txt");
+    PluginUtils.loadVoters(this.voterMap, "examples/voters-universidade.txt");
+    voteSequence.add(ChefeDepartamento.type);
   }
 
   @Override
