@@ -5,8 +5,16 @@ class ElectoralSystem {
   private UrnaVoter urnaVoter;
   private String electionPassword = "pass";
   private Election election;
+  static private ElectoralSystem singletonInstance = null;
 
-  public ElectoralSystem(String pluginType) {
+  static public ElectoralSystem instance(String pluginType) {
+    if (ElectoralSystem.singletonInstance == null) {
+      ElectoralSystem.singletonInstance = new ElectoralSystem(pluginType);
+    }
+    return ElectoralSystem.singletonInstance;
+  }
+
+  private ElectoralSystem(String pluginType) {
     var plugin = Plugins.factory(pluginType);
     election = new Election(electionPassword, plugin);
     addTestData(election);
