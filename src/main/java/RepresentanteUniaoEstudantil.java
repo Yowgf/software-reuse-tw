@@ -1,7 +1,7 @@
 package ElectoralSystem;
 
-public class ChefeDepartamento extends Candidate {
-  public static CandidateType type = new CandidateType("Chefe de Departamento", false); //False pq não depende de localização
+public class RepresentanteUniaoEstudantil extends Candidate {
+  public static CandidateType type = new CandidateType("Representante da Uniao Estudantil", false); //False pq não depende de localização
 
   public static class Builder {
     protected String name;
@@ -23,17 +23,17 @@ public class ChefeDepartamento extends Candidate {
       return this;
     }
 
-    public ChefeDepartamento build() {
-      return new ChefeDepartamento(this.name, this.party, this.number);
+    public RepresentanteUniaoEstudantil build() {
+      return new RepresentanteUniaoEstudantil(this.name, this.party, this.number);
     }
   }
 
-  protected ChefeDepartamento(String name, String party, int number) {
+  protected RepresentanteUniaoEstudantil(String name, String party, int number) {
     super(name, party, number, "");
   }
 
   @Override
   public CandidateType getType() {
-    return ChefeDepartamento.type;
+    return RepresentanteUniaoEstudantil.type;
   }
 }

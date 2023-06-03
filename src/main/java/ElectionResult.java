@@ -96,7 +96,7 @@ public class ElectionResult {
   }
 
   private String tableElement(String content) {
-    return String.format("%-16s", content);
+    return String.format("%-34s", content);
   }
 
   private String tableHeader(int rowlen) {
