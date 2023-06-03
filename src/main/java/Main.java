@@ -7,7 +7,7 @@ class Main {
       System.exit(1);
     }
     var electionType = args[0];
-    ElectoralSystem s = new ElectoralSystem(electionType);
+    ElectoralSystem s = ElectoralSystem.instance(electionType);
     s.startMenu();
   }
 }

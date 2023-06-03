@@ -1,7 +1,7 @@
 package ElectoralSystem;
 
 public class President extends Candidate {
-  public static CandidateType type = new CandidateType("Presidente", false); //False pq não depende de localização
+  public static CandidateType type = new CandidateType("Presidente", false);
 
   public static class Builder {
     protected String name;

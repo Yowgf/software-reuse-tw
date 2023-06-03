@@ -42,12 +42,12 @@ public class Plugins extends Plugin {
       case "municipal":
         plugins.add(new PluginMunicipal());
         break;
-      case "universidade":
-        plugins.add(new PluginUniversidade());
-        break;
-      case "todos":
+      case "federal_municipal":
         plugins.add(new PluginFederal());
         plugins.add(new PluginMunicipal());
+        break;
+      case "universidade":
+        plugins.add(new PluginUniversidade());
         break;
       default:
         throw new IllegalArgumentException("invalid election type " + typ);
