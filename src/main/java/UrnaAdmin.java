@@ -5,18 +5,15 @@ import java.util.Map;
 
 // UrnaAdmin represents the backend where an administrator can start or end an
 // election using their credentials.
-//
-// TODO: don't use anything TSE-specific, everything should be just
-// CertifiedProfessional -aholmqusit 2023-05-27
 class UrnaAdmin {
-  private final Map<String, TSEProfessional> TSEMap = new HashMap<>();
+  private final Map<String, CertifiedProfessional> CertifiedProfessionalMap = new HashMap<>();
 
   private Election election;
   private boolean sessionStarted = false;
 
   public UrnaAdmin(Election election) {
     this.election = election;
-    loadTestTSEProfessionals();
+    loadTestCertifiedProfessionals();
   }
 
   private void print(String s) {
@@ -26,8 +23,8 @@ class UrnaAdmin {
   public void menu() {
     try {
       print("Certified Professional login\n");
-      TSEProfessional tseProfessional = getTSEProfessional();
-      if (tseProfessional == null) return;
+      CertifiedProfessional certifiedProfessional = getCertifiedProfessional();
+      if (certifiedProfessional == null) return;
       boolean back = false;
       while (!back) {
         print("(1) Iniciar sessão");
@@ -36,9 +33,9 @@ class UrnaAdmin {
         print("(0) Sair");
         int command = PluginUtils.readInt();
         switch (command) {
-          case 1 -> startSession((CertifiedProfessional) tseProfessional);
-          case 2 -> endSession((CertifiedProfessional) tseProfessional);
-          case 3 -> showResults((CertifiedProfessional) tseProfessional);
+          case 1 -> startSession((CertifiedProfessional) certifiedProfessional);
+          case 2 -> endSession((CertifiedProfessional) certifiedProfessional);
+          case 3 -> showResults((CertifiedProfessional) certifiedProfessional);
           case 0 -> back = true;
           default -> print("Comando inválido\n");
         }
@@ -53,11 +50,11 @@ class UrnaAdmin {
     return sessionStarted;
   }
 
-  private void startSession(CertifiedProfessional tseProfessional) {
+  private void startSession(CertifiedProfessional certifiedProfessional) {
     try {
       print("Insira a senha da urna");
       String pwd = PluginUtils.readString();
-      tseProfessional.startSession(election, pwd);
+      certifiedProfessional.startSession(election, pwd);
       sessionStarted = true;
       print("Sessão inicializada");
       print("\n");
@@ -66,11 +63,11 @@ class UrnaAdmin {
     }
   }
 
-  private void endSession(CertifiedProfessional tseProfessional) {
+  private void endSession(CertifiedProfessional certifiedProfessional) {
     try {
       print("Insira a senha da urna:");
       String pwd = PluginUtils.readString();
-      tseProfessional.endSession(election, pwd);
+      certifiedProfessional.endSession(election, pwd);
       print("Sessão finalizada com sucesso");
       print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     } catch (Warning e) {
@@ -78,37 +75,37 @@ class UrnaAdmin {
     }
   }
 
-  private TSEProfessional getTSEProfessional() {
+  private CertifiedProfessional getCertifiedProfessional() {
     print("Insira seu usuário:");
     String user = PluginUtils.readString();
-    TSEProfessional tseProfessional = TSEMap.get(user);
-    if (tseProfessional == null) {
+    CertifiedProfessional certifiedProfessional = CertifiedProfessionalMap.get(user);
+    if (certifiedProfessional == null) {
       print(
-          "Funcionário do TSE não encontrado, por favor confirme se a entrada está correta e tente"
+          "Funcionário certificado não encontrado, por favor confirme se a entrada está correta e tente"
               + " novamente");
     } else {
       print("Insira sua senha:");
       String password = PluginUtils.readString();
       // Deveria ser um hash na pratica
-      if (tseProfessional.password.equals(password)) return tseProfessional;
+      if (certifiedProfessional.password.equals(password)) return certifiedProfessional;
       print("Senha inválida, tente novamente");
       print("\n");
     }
     return null;
   }
 
-  private void showResults(CertifiedProfessional tseProfessional) {
+  private void showResults(CertifiedProfessional certifiedProfessional) {
     try {
       print("Insira a senha da urna");
       String pwd = PluginUtils.readString();
-      print(tseProfessional.getFinalResult(election, pwd));
+      print(certifiedProfessional.getFinalResult(election, pwd));
       print("\n");
     } catch (Warning e) {
       print(e.getMessage());
     }
   }
 
-  private void loadTestTSEProfessionals() {
-    TSEMap.put("cert", new CertifiedProfessional.Builder().user("cert").password("1").build());
+  private void loadTestCertifiedProfessionals() {
+    CertifiedProfessionalMap.put("cert", new CertifiedProfessional.Builder().user("cert").password("1").build());
   }
 }
