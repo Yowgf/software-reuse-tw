@@ -42,6 +42,10 @@ public class Plugins extends Plugin {
       case "municipal":
         plugins.add(new PluginMunicipal());
         break;
+      case "federal_municipal":
+        plugins.add(new PluginFederal());
+        plugins.add(new PluginMunicipal());
+        break;
       case "universidade":
         plugins.add(new PluginUniversidade());
         break;
