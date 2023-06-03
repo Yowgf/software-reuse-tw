@@ -81,7 +81,7 @@ class UrnaAdmin {
     CertifiedProfessional certifiedProfessional = CertifiedProfessionalMap.get(user);
     if (certifiedProfessional == null) {
       print(
-          "Funcionário do Certificado não encontrado, por favor confirme se a entrada está correta e tente"
+          "Funcionário certificado não encontrado, por favor confirme se a entrada está correta e tente"
               + " novamente");
     } else {
       print("Insira sua senha:");
