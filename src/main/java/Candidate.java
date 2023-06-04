@@ -3,8 +3,8 @@ package ElectoralSystem;
 public class Candidate {
   protected final String name;
   protected final String party;
-  protected final String location;
   protected final int number;
+  protected final String location;
 
   public Candidate(String name, String party, int number, String location) {
 
@@ -22,8 +22,8 @@ public class Candidate {
 
     this.name = name;
     this.party = party;
-    this.location = location;
     this.number = number;
+    this.location = location;
   }
 
   public String getName() {
@@ -34,12 +34,12 @@ public class Candidate {
     return this.party;
   }
 
-  public String getLocation() {
-    return this.location;
-  }
-
   public int getNumber() {
     return this.number;
+  }
+
+  public String getLocation() {
+    return this.location;
   }
 
   // getType returns a candidate type, which should encompass information like

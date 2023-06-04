@@ -58,5 +58,4 @@ public class CertifiedProfessional {
       return new CertifiedProfessional(this.user, this.password);
     }
   }
-
 }

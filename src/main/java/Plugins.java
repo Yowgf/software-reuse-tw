@@ -28,30 +28,7 @@ public class Plugins extends Plugin {
     return new ArrayList<>(set);
   }
 
-  private Plugins(ArrayList<Plugin> plugins) {
+  public Plugins(ArrayList<Plugin> plugins) {
     this.plugins = plugins;
-  }
-
-  public static Plugin factory(String typ) {
-    var plugins = new ArrayList<Plugin>();
-    switch (typ) {
-      case "":
-      case "federal":
-        plugins.add(new PluginFederal());
-        break;
-      case "municipal":
-        plugins.add(new PluginMunicipal());
-        break;
-      case "federal_municipal":
-        plugins.add(new PluginFederal());
-        plugins.add(new PluginMunicipal());
-        break;
-      case "universidade":
-        plugins.add(new PluginUniversidade());
-        break;
-      default:
-        throw new IllegalArgumentException("invalid election type " + typ);
-    }
-    return new Plugins(plugins);
   }
 }
