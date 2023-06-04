@@ -19,4 +19,23 @@ public abstract class Plugin {
   public abstract ArrayList<CandidateID> electionWinners(Map<CandidateID, Integer> votes);
 
   public abstract boolean vote(Election election);
+
+  public static Plugin factory(String typ) {
+    switch (typ) {
+      case "":
+      case "federal":
+        return new PluginFederal();
+      case "municipal":
+        return new PluginMunicipal();
+      case "federal_municipal":
+        var plugins = new ArrayList<Plugin>();
+        plugins.add(new PluginFederal());
+        plugins.add(new PluginMunicipal());
+        return new Plugins(plugins);
+      case "universidade":
+        return new PluginUniversidade();
+      default:
+        throw new IllegalArgumentException("invalid election type " + typ);
+    }
+  }
 }

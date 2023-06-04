@@ -15,7 +15,7 @@ class ElectoralSystem {
   }
 
   private ElectoralSystem(String pluginType) {
-    var plugin = Plugins.factory(pluginType);
+    var plugin = Plugin.factory(pluginType);
     election = new Election(electionPassword, plugin);
     addTestData(election);
     urnaAdmin = new UrnaAdmin(election);
