@@ -100,15 +100,12 @@ class ElectoralSystem {
         new ChefeDepartamento.Builder().name("Daniel").number(23).party("DCC").build();
     ChefeDepartamento ChefeDepartamentoCandidate2 =
         new ChefeDepartamento.Builder().name("Leticia").number(24).party("DCC").build();
-
     RepresentanteUniaoEstudantil RepresentanteUniaoEstudantilCandidate1 =
         new RepresentanteUniaoEstudantil.Builder().name("Felipe").number(1).party("DCC").build();
     RepresentanteUniaoEstudantil RepresentanteUniaoEstudantilCandidate2 =
         new RepresentanteUniaoEstudantil.Builder().name("Alexandre").number(2).party("DCC").build();
-
     election.addCandidate(ChefeDepartamentoCandidate1);
     election.addCandidate(ChefeDepartamentoCandidate2);
-
     election.addCandidate(RepresentanteUniaoEstudantilCandidate1);
     election.addCandidate(RepresentanteUniaoEstudantilCandidate2);
   }
