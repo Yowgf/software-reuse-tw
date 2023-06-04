@@ -98,7 +98,7 @@ public class PluginUtils {
             new Voter.Builder()
                 .electoralCard(voterData[0])
                 .name(voterData[1])
-                .location(voterData[2])
+                .location(voterData[2].strip())
                 .build());
       }
       myReader.close();

@@ -7,7 +7,7 @@ class PluginMunicipal extends Plugin {
   private final ArrayList<CandidateType> voteSequence = new ArrayList<CandidateType>();
 
   public PluginMunicipal() {
-    PluginUtils.loadVoters(this.voterMap, "examples/voters.txt");
+    PluginUtils.loadVoters(this.voterMap, "examples/voters-municipal.txt");
     voteSequence.add(Mayor.type);
     voteSequence.add(Vereador.type);
     voteSequence.add(Vereador.type);

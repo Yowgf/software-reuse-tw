@@ -7,7 +7,7 @@ class PluginFederal extends Plugin {
   private final ArrayList<CandidateType> voteSequence = new ArrayList<CandidateType>();
 
   public PluginFederal() {
-    PluginUtils.loadVoters(this.voterMap, "examples/voters.txt");
+    PluginUtils.loadVoters(this.voterMap, "examples/voters-federal.txt");
     voteSequence.add(President.type);
     voteSequence.add(FederalDeputy.type);
     voteSequence.add(FederalDeputy.type);
