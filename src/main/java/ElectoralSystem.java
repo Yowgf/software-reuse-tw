@@ -5,9 +5,9 @@ class ElectoralSystem {
   private UrnaVoter urnaVoter;
   private String electionPassword = "pass";
   private Election election;
-  static private ElectoralSystem singletonInstance = null;
+  private static ElectoralSystem singletonInstance = null;
 
-  static public ElectoralSystem instance(String pluginType) {
+  public static ElectoralSystem instance(String pluginType) {
     if (ElectoralSystem.singletonInstance == null) {
       ElectoralSystem.singletonInstance = new ElectoralSystem(pluginType);
     }
@@ -101,16 +101,15 @@ class ElectoralSystem {
     ChefeDepartamento ChefeDepartamentoCandidate2 =
         new ChefeDepartamento.Builder().name("Leticia").number(24).party("DCC").build();
 
-    RepresentanteUniaoEstudantil RepresentanteUniaoEstudantilCandidate1 = 
+    RepresentanteUniaoEstudantil RepresentanteUniaoEstudantilCandidate1 =
         new RepresentanteUniaoEstudantil.Builder().name("Felipe").number(1).party("DCC").build();
-    RepresentanteUniaoEstudantil RepresentanteUniaoEstudantilCandidate2 = 
+    RepresentanteUniaoEstudantil RepresentanteUniaoEstudantilCandidate2 =
         new RepresentanteUniaoEstudantil.Builder().name("Alexandre").number(2).party("DCC").build();
-  
+
     election.addCandidate(ChefeDepartamentoCandidate1);
     election.addCandidate(ChefeDepartamentoCandidate2);
 
     election.addCandidate(RepresentanteUniaoEstudantilCandidate1);
     election.addCandidate(RepresentanteUniaoEstudantilCandidate2);
   }
-
 }

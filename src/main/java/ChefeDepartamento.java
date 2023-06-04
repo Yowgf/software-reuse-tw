@@ -2,6 +2,7 @@ package ElectoralSystem;
 
 public class ChefeDepartamento extends Candidate {
   public static CandidateType type = new CandidateType("Chefe de Departamento", false);
+
   public static class Builder {
     protected String name;
     protected String party;

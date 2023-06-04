@@ -81,8 +81,8 @@ class UrnaAdmin {
     CertifiedProfessional certifiedProfessional = CertifiedProfessionalMap.get(user);
     if (certifiedProfessional == null) {
       print(
-          "Funcionário certificado não encontrado, por favor confirme se a entrada está correta e tente"
-              + " novamente");
+          "Funcionário certificado não encontrado, por favor confirme se a entrada está correta e"
+              + " tente novamente");
     } else {
       print("Insira sua senha:");
       String password = PluginUtils.readString();
@@ -106,6 +106,7 @@ class UrnaAdmin {
   }
 
   private void loadTestCertifiedProfessionals() {
-    CertifiedProfessionalMap.put("cert", new CertifiedProfessional.Builder().user("cert").password("1").build());
+    CertifiedProfessionalMap.put(
+        "cert", new CertifiedProfessional.Builder().user("cert").password("1").build());
   }
 }

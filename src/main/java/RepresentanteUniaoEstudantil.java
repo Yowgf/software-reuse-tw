@@ -2,6 +2,7 @@ package ElectoralSystem;
 
 public class RepresentanteUniaoEstudantil extends Candidate {
   public static CandidateType type = new CandidateType("Representante da Uniao Estudantil", false);
+
   public static class Builder {
     protected String name;
     protected String party;
