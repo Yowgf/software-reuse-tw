@@ -112,6 +112,5 @@ Vencedores
 Use `cert` to login as a certified professional. Use as password the digit
 `1`. The _Urna_ password is `pass`.
 
-The file `examples/voterLoad.txt` defines all the voters loaded by the Federal
-and Municipal plugins. Please use one of those when trying out one of these
+The files `examples/*.txt` define all the voters loaded by the Federal, Municipal and Universidade plugins. Please use one of those when trying out one of these
 plugins.
