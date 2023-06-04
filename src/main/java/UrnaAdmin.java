@@ -22,11 +22,12 @@ class UrnaAdmin {
 
   public void menu() {
     try {
-      print("Certified Professional login\n");
       CertifiedProfessional certifiedProfessional = getCertifiedProfessional();
       if (certifiedProfessional == null) return;
       boolean back = false;
       while (!back) {
+        print("\n\nLogado como Profissional Certificado!");
+        print("\nDigite uma opção:");
         print("(1) Iniciar sessão");
         print("(2) Finalizar sessão");
         print("(3) Mostrar resultados");
@@ -37,9 +38,10 @@ class UrnaAdmin {
           case 2 -> endSession((CertifiedProfessional) certifiedProfessional);
           case 3 -> showResults((CertifiedProfessional) certifiedProfessional);
           case 0 -> back = true;
-          default -> print("Comando inválido\n");
+          default -> print("Comando inválido.\n");
         }
       }
+      print("\n\nVotação iniciada!\n");
     } catch (Warning e) {
       print(e.getMessage());
     }
@@ -52,11 +54,11 @@ class UrnaAdmin {
 
   private void startSession(CertifiedProfessional certifiedProfessional) {
     try {
-      print("Insira a senha da urna");
+      print("Insira a senha da urna:");
       String pwd = PluginUtils.readString();
       certifiedProfessional.startSession(election, pwd);
       sessionStarted = true;
-      print("Sessão inicializada");
+      print("Sessão inicializada.");
       print("\n");
     } catch (Warning e) {
       print(e.getMessage());
@@ -68,7 +70,7 @@ class UrnaAdmin {
       print("Insira a senha da urna:");
       String pwd = PluginUtils.readString();
       certifiedProfessional.endSession(election, pwd);
-      print("Sessão finalizada com sucesso");
+      print("Sessão finalizada com sucesso!");
       print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     } catch (Warning e) {
       print(e.getMessage());
@@ -76,19 +78,20 @@ class UrnaAdmin {
   }
 
   private CertifiedProfessional getCertifiedProfessional() {
-    print("Insira seu usuário:");
+    print("\n\nFaça login como Profissional Certificado.");
+    print("Insira o usuário:");
     String user = PluginUtils.readString();
     CertifiedProfessional certifiedProfessional = CertifiedProfessionalMap.get(user);
     if (certifiedProfessional == null) {
       print(
-          "Funcionário certificado não encontrado, por favor confirme se a entrada está correta e"
+          "Profissional Certificado não encontrado, por favor confirme se a entrada está correta e"
               + " tente novamente");
     } else {
-      print("Insira sua senha:");
+      print("Insira a senha:");
       String password = PluginUtils.readString();
       // Deveria ser um hash na pratica
       if (certifiedProfessional.password.equals(password)) return certifiedProfessional;
-      print("Senha inválida, tente novamente");
+      print("Senha inválida, tente novamente.");
       print("\n");
     }
     return null;
@@ -96,7 +99,7 @@ class UrnaAdmin {
 
   private void showResults(CertifiedProfessional certifiedProfessional) {
     try {
-      print("Insira a senha da urna");
+      print("Insira a senha da urna:");
       String pwd = PluginUtils.readString();
       print(certifiedProfessional.getFinalResult(election, pwd));
       print("\n");

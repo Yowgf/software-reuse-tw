@@ -7,7 +7,7 @@ class PluginMunicipal extends Plugin {
   private final ArrayList<CandidateType> voteSequence = new ArrayList<CandidateType>();
 
   public PluginMunicipal() {
-    PluginUtils.loadVoters(this.voterMap, "examples/voters-municipal.txt");
+    PluginUtils.loadVoters(this.voterMap, "examples/voters.txt");
     voteSequence.add(Mayor.type);
     voteSequence.add(Vereador.type);
     voteSequence.add(Vereador.type);
@@ -34,7 +34,7 @@ class PluginMunicipal extends Plugin {
     String electoralCard = PluginUtils.readString();
     Voter voter = voterMap.get(electoralCard);
     if (voter == null) {
-      print("Eleitor não encontrado.");
+      print("\n\nVotos finalizados. Aguardando Profissional Certificado.");
       return null;
     }
     return voter;

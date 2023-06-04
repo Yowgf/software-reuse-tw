@@ -97,13 +97,13 @@ class ElectoralSystem {
 
   private void addTestDataUniversidade(Election election) {
     ChefeDepartamento ChefeDepartamentoCandidate1 =
-        new ChefeDepartamento.Builder().name("Daniel").number(23).party("DCC").build();
+        new ChefeDepartamento.Builder().name("Daniel").number(23).depart("DCC").build();
     ChefeDepartamento ChefeDepartamentoCandidate2 =
-        new ChefeDepartamento.Builder().name("Leticia").number(24).party("DCC").build();
+        new ChefeDepartamento.Builder().name("Leticia").number(24).depart("DCC").build();
     RepresentanteUniaoEstudantil RepresentanteUniaoEstudantilCandidate1 =
-        new RepresentanteUniaoEstudantil.Builder().name("Felipe").number(1).party("DCC").build();
+        new RepresentanteUniaoEstudantil.Builder().name("Felipe").number(1).depart("DCC").build();
     RepresentanteUniaoEstudantil RepresentanteUniaoEstudantilCandidate2 =
-        new RepresentanteUniaoEstudantil.Builder().name("Alexandre").number(2).party("DCC").build();
+        new RepresentanteUniaoEstudantil.Builder().name("Alexandre").number(2).depart("DCC").build();
     election.addCandidate(ChefeDepartamentoCandidate1);
     election.addCandidate(ChefeDepartamentoCandidate2);
     election.addCandidate(RepresentanteUniaoEstudantilCandidate1);

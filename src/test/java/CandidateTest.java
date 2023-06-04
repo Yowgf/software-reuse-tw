@@ -9,7 +9,7 @@ public class CandidateTest {
   public void testCandidateConstructor() {
     String name = "Alberto";
     String party = "PV";
-    int number = 1232;
+    int number = 123;
     String loc = "location1";
 
     Candidate candidate = new Candidate(name, party, number, loc);
