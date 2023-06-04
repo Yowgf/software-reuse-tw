@@ -9,7 +9,7 @@ public class FederalDeputyTest {
   public void testFederalDeputyBuilder() {
     String name = "Alberto";
     String party = "PV";
-    int number = 1324;
+    int number = 132;
     String state = "MG";
 
     FederalDeputy fedDeputy =

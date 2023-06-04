@@ -7,7 +7,7 @@ class PluginUniversidade extends Plugin {
   private final ArrayList<CandidateType> voteSequence = new ArrayList<CandidateType>();
 
   public PluginUniversidade() {
-    PluginUtils.loadVoters(this.voterMap, "examples/voters-universidade.txt");
+    PluginUtils.loadVoters(this.voterMap, "examples/voters.txt");
     voteSequence.add(ChefeDepartamento.type);
     voteSequence.add(RepresentanteUniaoEstudantil.type);
   }
@@ -33,7 +33,7 @@ class PluginUniversidade extends Plugin {
     String electoralCard = PluginUtils.readString();
     Voter voter = voterMap.get(electoralCard);
     if (voter == null) {
-      print("Eleitor não encontrado.");
+      print("\n\nVotos finalizados. Aguardando Profissional Certificado.");
       return null;
     }
     return voter;

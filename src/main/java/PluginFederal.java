@@ -7,7 +7,7 @@ class PluginFederal extends Plugin {
   private final ArrayList<CandidateType> voteSequence = new ArrayList<CandidateType>();
 
   public PluginFederal() {
-    PluginUtils.loadVoters(this.voterMap, "examples/voters-federal.txt");
+    PluginUtils.loadVoters(this.voterMap, "examples/voters.txt");
     voteSequence.add(President.type);
     voteSequence.add(FederalDeputy.type);
     voteSequence.add(FederalDeputy.type);
@@ -34,7 +34,7 @@ class PluginFederal extends Plugin {
     String electoralCard = PluginUtils.readString();
     Voter voter = voterMap.get(electoralCard);
     if (voter == null) {
-      print("Eleitor não encontrado.");
+      print("\n\nVotos finalizados. Aguardando Profissional Certificado.");
       return null;
     }
     return voter;
