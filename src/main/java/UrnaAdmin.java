@@ -26,7 +26,7 @@ class UrnaAdmin {
       if (certifiedProfessional == null) return;
       boolean back = false;
       while (!back) {
-        print("\n\nLogado como Profissional Certificado!");
+        print("\nVocê está logado como Profissional Certificado.");
         print("\nDigite uma opção:");
         print("(1) Iniciar sessão");
         print("(2) Finalizar sessão");
@@ -58,7 +58,7 @@ class UrnaAdmin {
       String pwd = PluginUtils.readString();
       certifiedProfessional.startSession(election, pwd);
       sessionStarted = true;
-      print("Sessão inicializada.");
+      print("\n\nSessão iniciada.");
       print("\n");
     } catch (Warning e) {
       print(e.getMessage());
