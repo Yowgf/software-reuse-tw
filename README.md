@@ -13,53 +13,91 @@ This project uses `gradle`. The following gradle rules are actively used:
 
 ```shell
 >> gradle fatjar
->> java -jar ./build/libs/software-reuse-tw.jar federal
-Certified Professional login
+>> java -jar ./build/libs/software-reuse-tw.jar federal 
 
-Insira seu usuário:
+
+Faça login como Profissional Certificado.
+Insira o usuário:
 cert
-Insira sua senha:
+Insira a senha:
 1
+
+Você está logado como Profissional Certificado.
+
+Digite uma opção:
 (1) Iniciar sessão
 (2) Finalizar sessão
 (3) Mostrar resultados
 (0) Sair
 1
-Insira a senha da urna
+Insira a senha da urna:
 pass
-Sessão inicializada
 
 
+Sessão iniciada.
+
+
+
+Você está logado como Profissional Certificado.
+
+Digite uma opção:
 (1) Iniciar sessão
 (2) Finalizar sessão
 (3) Mostrar resultados
 (0) Sair
 0
+
+
+Votação iniciada!
+
 Insira seu título de eleitor:
-123456789012
+9655756
 
 - 'nulo' para votar nulo
 - 'br' para votar em branco
 
 
-Vote para Presidente: 
+Vote para Presidente:
 123
 
-Vote para Deputado Federal: 
+Vote para Deputado Federal:
 12345
 
-Vote para Deputado Federal: 
+Vote para Deputado Federal:
 54321
 
 Insira seu título de eleitor:
+8152056
 
-Eleitor não encontrado.
-Certified Professional login
+- 'nulo' para votar nulo
+- 'br' para votar em branco
 
-Insira seu usuário:
+
+Vote para Presidente:
+123
+
+Vote para Deputado Federal:
+12345
+
+Vote para Deputado Federal:
+nulo
+
+Insira seu título de eleitor:
+FIM
+
+
+Votos finalizados. Aguardando Profissional Certificado.
+
+
+Faça login como Profissional Certificado.
+Insira o usuário:
 cert
-Insira sua senha:
+Insira a senha:
 1
+
+Você está logado como Profissional Certificado.
+
+Digite uma opção:
 (1) Iniciar sessão
 (2) Finalizar sessão
 (3) Mostrar resultados
@@ -67,43 +105,63 @@ Insira sua senha:
 2
 Insira a senha da urna:
 pass
-Sessão finalizada com sucesso
+Sessão finalizada com sucesso!
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
+
+Você está logado como Profissional Certificado.
+
+Digite uma opção:
 (1) Iniciar sessão
 (2) Finalizar sessão
 (3) Mostrar resultados
 (0) Sair
 3
-Insira a senha da urna
+Insira a senha da urna:
 pass
 
 Resultado da eleição:
 
 Vencedores
----------------------------------------------------------------------
-|Tipo            |Localização     |Número          |Votos           |
-|Deputado Federal|MG              |54321           |1               |
-|Presidente      |                |123             |1               |
----------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------
+|Tipo                              |Localização                       |Número                            |Votos
+     |
+|Deputado Federal                  |MG                                |12345                             |2
+     |
+|Deputado Federal                  |MG                                |0                                 |0
+     |
+|Presidente                        |                                  |123                               |2
+     |
+---------------------------------------------------------------------------------------------------------------------------------------------
 
 
----------------------------------------------------------------------
-|Tipo            |Localização     |Número          |Votos           |
-|Deputado Federal|MG              |54321           |1               |
-|Deputado Federal|MG              |12345           |1               |
-|Presidente      |                |123             |1               |
----------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------
+|Tipo                              |Localização                       |Número                            |Votos
+     |
+|Deputado Federal                  |MG                                |54321                             |1
+     |
+|Deputado Federal                  |MG                                |12345                             |2
+     |
+|Deputado Federal                  |MG                                |0                                 |0
+     |
+|Presidente                        |                                  |123                               |2
+     |
+---------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
 
+
+Você está logado como Profissional Certificado.
+
+Digite uma opção:
 (1) Iniciar sessão
 (2) Finalizar sessão
 (3) Mostrar resultados
 (0) Sair
+
 
 ```
 
